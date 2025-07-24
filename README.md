@@ -13,7 +13,7 @@
 🎉 February 10, 2025: Introduced a DeepSeek Assistant Node. Meanwhile, we also added a new feature that allows users to configure the LLM model for all conversable nodes.
 
 > [!Note]
-> We're currently busy working on the backend framework project [AgentX](https://github.com/dustland/agentx), as the new backend of Agentok. Please let us know any of your thoughts by [Open an Issue](https://github.com/dustland/agentx/issues/new).
+> We're currently busy working on the backend framework project [VibeX](https://github.com/dustland/vibex), as the new backend of Agentok. Please let us know any of your thoughts by [Open an Issue](https://github.com/dustland/vibex/issues/new).
 
 ## 🌟 What is Agentok Studio
 

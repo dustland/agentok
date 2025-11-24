@@ -6,7 +6,7 @@ We use Supabase as the backend database service. Please follow these steps to in
 1. Enable PGVector by executing: `CREATE EXTENSION IF NOT EXISTS vector;` in SQL Editor;
 1. Copy the whole content of [schema.sql](./sql/schema.sql) and execute;
 1. Copy the content of [create_user.sql](./sql/create_user.sql) and execute;
-1. Copy the content of [sample_data.sql](./sql/create_user.sql) and execute;
+1. Copy the content of [sample_data.sql](./sql/sample_data.sql) and execute;
 1. Go to Table Editor and verify the tables under schema: public;
 
 If tables such as `api_keys`, `chat_message` etc appear correctly, please go back to [README](../README.md) and follow the instructions to set the environment variables correctly for Supabase, both api and frontend projects depend on Supabase.

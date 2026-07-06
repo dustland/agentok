@@ -2,6 +2,9 @@
 const nextConfig = {
   // output: 'standalone', // for Docker build
   reactStrictMode: true,
+  turbopack: {
+    root: __dirname,
+  },
   images: {
     remotePatterns: [
       {
@@ -11,11 +14,6 @@ const nextConfig = {
         pathname: '**',
       },
     ],
-  },
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
   },
 };
 

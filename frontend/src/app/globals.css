@@ -1,3 +1,5 @@
+@config "../../tailwind.config.ts";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -86,11 +88,12 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
@@ -186,33 +189,51 @@ input-sm[type='number'] {
 
 /* Predefined node styles */
 .node-general {
-  @apply bg-primary/5 border-primary/10;
+  background-color: hsl(var(--primary) / 0.05);
+  border-color: hsl(var(--primary) / 0.1);
 }
 
 .node-general-selected {
-  @apply bg-primary/20 border-primary/30 shadow-primary/40;
+  background-color: hsl(var(--primary) / 0.2);
+  border-color: hsl(var(--primary) / 0.3);
+  box-shadow: 0 10px 15px -3px hsl(var(--primary) / 0.4);
 }
 
 .node-agent {
-  @apply bg-sky-600/20 text-sky-300 border-sky-600/30;
+  background-color: rgb(2 132 199 / 0.2);
+  color: rgb(125 211 252);
+  border-color: rgb(2 132 199 / 0.3);
 }
 
 .node-agent-selected {
-  @apply bg-sky-400/50 text-sky-100 border-sky-400/70 shadow-sky-300/50;
+  background-color: rgb(56 189 248 / 0.5);
+  color: rgb(224 242 254);
+  border-color: rgb(56 189 248 / 0.7);
+  box-shadow: 0 10px 15px -3px rgb(125 211 252 / 0.5);
 }
 
 .node-group {
-  @apply bg-green-600/10 text-green-300 border-green-600/30;
+  background-color: rgb(22 163 74 / 0.1);
+  color: rgb(134 239 172);
+  border-color: rgb(22 163 74 / 0.3);
 }
 
 .node-group-selected {
-  @apply bg-green-600/20 text-green-100 border-green-600/50 shadow-green-600/20;
+  background-color: rgb(22 163 74 / 0.2);
+  color: rgb(220 252 231);
+  border-color: rgb(22 163 74 / 0.5);
+  box-shadow: 0 10px 15px -3px rgb(22 163 74 / 0.2);
 }
 
 .node-note {
-  @apply bg-yellow-600/50 text-yellow-300 border-yellow-600/30;
+  background-color: rgb(202 138 4 / 0.5);
+  color: rgb(253 224 71);
+  border-color: rgb(202 138 4 / 0.3);
 }
 
 .node-note-selected {
-  @apply bg-yellow-600/70 text-yellow-100 border-yellow-600/50 shadow-yellow-600/20;
+  background-color: rgb(202 138 4 / 0.7);
+  color: rgb(254 249 195);
+  border-color: rgb(202 138 4 / 0.5);
+  box-shadow: 0 10px 15px -3px rgb(202 138 4 / 0.2);
 }

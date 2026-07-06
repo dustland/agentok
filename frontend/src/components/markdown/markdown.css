@@ -1,3 +1,5 @@
+@reference "../../app/globals.css";
+
 .markdown {
   line-height: 1.5;
 }
@@ -19,17 +21,25 @@ li {
 }
 
 .markdown h1 {
-  @apply text-2xl font-bold py-2;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 2rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .markdown h2 {
-  @apply text-xl font-bold;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.75rem;
 }
 
 .markdown h3 {
-  @apply text-base font-bold;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5rem;
 }
 
 .markdown img {
-  @apply rounded;
+  border-radius: 0.25rem;
 }

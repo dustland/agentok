@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown';
+import { Markdown } from '@/components/markdown';
 import { useToolSettings } from '@/hooks';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';

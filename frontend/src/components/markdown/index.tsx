@@ -118,7 +118,7 @@ export const Markdown = ({
           // Replace <p> with <div>
           return <div {...props}>{children}</div>;
         },
-        a(data): JSX.Element {
+        a(data): React.JSX.Element {
           return suppressLink ? (
             <span className="text-primary" {...data} />
           ) : (

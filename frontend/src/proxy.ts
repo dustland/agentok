@@ -8,7 +8,7 @@ const publicMatcher = (pathname: string): boolean => {
   return publicPaths.test(pathname);
 };
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const res = NextResponse.next();
 
   const isPublicPath = publicMatcher(req.nextUrl.pathname) !== false;

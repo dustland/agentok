@@ -1,0 +1,65 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+6:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+7:I[41206,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ImageZoom"]
+17:I[72799,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],""]
+18:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+5:T6ab,# Conversation Patterns
+
+In AG2, *who talks to whom* shapes the behavior of a multi-agent app. Agentok Studio models this with **edges** between nodes.
+
+## Sequential chat
+
+Connect two agents with a directed edge to create a one-to-one conversation path. The source agent can hand off messages to the target agent.
+
+![Sequential chat with tool configuration on an edge](/images/screenshot/sequential-chat.png)
+
+This pattern fits pipelines: a planner hands work to an executor, or an assistant passes code to a user proxy for execution.
+
+## Group chat
+
+Place multiple agents inside a **Group** node to run a GroupChat. One agent (often a manager) decides who speaks next.
+
+![Group chat workflow](/images/screenshot/group-chat.png)
+
+Group chat suits open-ended collaboration — brainstorming, debate, or multi-role problem solving.
+
+## Tools on edges
+
+To let an agent call a tool during a conversation, attach the tool to the **edge** between the speaking agent and the executor.
+
+The LLM chooses which tool to invoke; the edge configuration tells the runtime which node runs it. This is why tool placement on connections matters — not just on individual agents.
+
+Configure tools on an edge from the edge property panel after selecting the connection.
+
+## AG2 patterns reference
+
+Agentok Studio supports the conversation patterns documented in AG2:
+
+- Two-agent chat (user proxy + assistant)
+- Sequential chats with multiple assistants
+- Group chat with a manager
+- Nested chats via custom functions (see [Ask Planner](/docs/examples/ask-planner))
+
+For the underlying theory, see [AG2 conversation patterns](https://docs.ag2.ai/docs/tutorial/conversation-patterns).
+
+Next: [Tools](/docs/guides/build/tools)0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Sequential chat","id":"sequential-chat","depth":2},{"value":"Group chat","id":"group-chat","depth":2},{"value":"Tools on edges","id":"tools-on-edges","depth":2},{"value":"AG2 patterns reference","id":"ag2-patterns-reference","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Conversation Patterns","filePath":"content/guides/build/conversation-patterns.md","timestamp":1783345576000},"sourceCode":"$5","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Conversation Patterns","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["In AG2, ",["$","em",null,{"children":"who talks to whom"}]," shapes the behavior of a multi-agent app. Agentok Studio models this with ",["$","strong",null,{"children":"edges"}]," between nodes."]}],"\n",["$","h2",null,{"id":"sequential-chat","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Sequential chat",["$","$L6",null,{"id":"sequential-chat"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Connect two agents with a directed edge to create a one-to-one conversation path. The source agent can hand off messages to the target agent."}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Sequential chat with tool configuration on an edge","placeholder":"blur","src":{"src":"/_next/static/media/sequential-chat.13508tp2t8st6.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAaElEQVR42j2NSRKDMAwE/f9nplK5OqCg1fJEpoBDn2bp9np/kJkYIxEx4BFQVlDfQBuhzTmxyMI8TuQQcP9C9iqstdfSzM8HtQCLoq8HOtC0grxelkbcIWrY6Qep4qO48VGKGnGVWAx/VIGcdl7p/zUAAAAASUVORK5CYII="}}]}],"\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15"]}]]}]]}]}],null,"$L16"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"6-Sx6SAIvJypFSJWdPCFw"}
+8:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"This pattern fits pipelines: a planner hands work to an executor, or an assistant passes code to a user proxy for execution."}]
+9:["$","h2",null,{"id":"group-chat","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Group chat",["$","$L6",null,{"id":"group-chat"}]]}]
+a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Place multiple agents inside a ",["$","strong",null,{"children":"Group"}]," node to run a GroupChat. One agent (often a manager) decides who speaks next."]}]
+b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Group chat workflow","placeholder":"blur","src":{"src":"/_next/static/media/group-chat.20zfc4h2p-a4y.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAfUlEQVR42j3NsRLCIBAEUArUABLgMMYkRIaMdKbNTP7/w1agsHhzV+zOsvj54iL831UOEPoF5d7QPoLxjlDpPsL0CcZuUHop4UcrtEB9yGWMw47xucPQBuEChJnAlA2o5H0ulsaGjPU8MR0HWN3knW8z/ObKdZA0g1KGXRN+TxQwogdmVoQAAAAASUVORK5CYII="}}]}]
+c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Group chat suits open-ended collaboration — brainstorming, debate, or multi-role problem solving."}]
+d:["$","h2",null,{"id":"tools-on-edges","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Tools on edges",["$","$L6",null,{"id":"tools-on-edges"}]]}]
+e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["To let an agent call a tool during a conversation, attach the tool to the ",["$","strong",null,{"children":"edge"}]," between the speaking agent and the executor."]}]
+f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The LLM chooses which tool to invoke; the edge configuration tells the runtime which node runs it. This is why tool placement on connections matters — not just on individual agents."}]
+10:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Configure tools on an edge from the edge property panel after selecting the connection."}]
+11:["$","h2",null,{"id":"ag2-patterns-reference","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["AG2 patterns reference",["$","$L6",null,{"id":"ag2-patterns-reference"}]]}]
+12:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Agentok Studio supports the conversation patterns documented in AG2:"}]
+13:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Two-agent chat (user proxy + assistant)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Sequential chats with multiple assistants"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Group chat with a manager"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Nested chats via custom functions (see ",["$","$L17",null,{"href":"/docs/examples/ask-planner","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"Ask Planner"}],")"]}],"\n"]}]
+14:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["For the underlying theory, see ",["$","a",null,{"href":"https://docs.ag2.ai/docs/tutorial/conversation-patterns","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["AG2 conversation patterns",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],"."]}]
+15:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Next: ",["$","$L17",null,{"href":"/docs/guides/build/tools","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"Tools"}]]}]
+16:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

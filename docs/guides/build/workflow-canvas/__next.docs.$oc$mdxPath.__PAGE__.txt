@@ -1,0 +1,86 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+19:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+1a:I[41206,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ImageZoom"]
+1b:I[72799,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],""]
+1c:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+5:T8c6,# Workflow Canvas
+
+The canvas is where you design multi-agent workflows. Each node is an AG2 agent or supporting element; edges define who talks to whom.
+
+## Adding nodes
+
+Click **+** in the top left to open the node palette. Drag a node onto the canvas or click to place it.
+
+### Basic nodes
+
+| Node | Purpose |
+| --- | --- |
+| **Initializer** | Entry point and global config (sample messages, LLM defaults) |
+| **Agent** | Generic conversable agent with full configuration |
+| **User** | UserProxyAgent — human interface and code execution |
+| **Assistant** | AssistantAgent — LLM-powered helper |
+| **Group** | GroupChat container for multiple agents |
+| **Note** | Comment on the canvas (not included in generated code) |
+
+### Advanced nodes
+
+| Node | Purpose |
+| --- | --- |
+| **Captain** | Agent tuned for breaking down complex tasks |
+| **Web Surfer** | Agent that browses the web |
+| **DeepSeek** | Assistant preconfigured for DeepSeek models |
+
+![Workflow canvas with agents](/images/screenshot/group-chat.png)
+
+## Configuring agents
+
+Click a node to open its property panel on the right. Common settings:
+
+- **Human Input Mode** — when the user proxy should pause for human input (`ALWAYS`, `TERMINATE`, or `NEVER`)
+- **Max Consecutive Auto Replies** — how many back-and-forth turns before stopping
+- **System message** — instructions that shape agent behavior
+- **LLM config** — model and inference settings (project-wide defaults can be set in Settings → Models)
+
+Use **More Options** on a node for advanced AG2 settings such as code execution config, termination messages, and custom functions.
+
+## Project layout
+
+A workflow editor has three main areas:
+
+1. **Canvas** — nodes and connections
+2. **Property panel** — selected node or edge settings
+3. **Toolbar** — add nodes, start chat, view Python code, toggle theme
+
+Switch between light and dark themes from the top right.
+
+## Tips
+
+- Start every workflow with an **Initializer** node for sample messages and shared LLM config.
+- Use **Notes** to document intent for collaborators without affecting codegen.
+- Name nodes clearly — names become variable names in the generated Python.
+
+Next: [Conversation Patterns](/docs/guides/build/conversation-patterns)0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Adding nodes","id":"adding-nodes","depth":2},{"value":"Basic nodes","id":"basic-nodes","depth":3},{"value":"Advanced nodes","id":"advanced-nodes","depth":3},{"value":"Configuring agents","id":"configuring-agents","depth":2},{"value":"Project layout","id":"project-layout","depth":2},{"value":"Tips","id":"tips","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Workflow Canvas","filePath":"content/guides/build/workflow-canvas.md","timestamp":1783345576000},"sourceCode":"$5","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Workflow Canvas","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The canvas is where you design multi-agent workflows. Each node is an AG2 agent or supporting element; edges define who talks to whom."}],"\n",["$","h2",null,{"id":"adding-nodes","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Adding nodes","$L6"]}],"\n","$L7","\n","$L8","\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","$L9","\n","$La","\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17"]}]]}]]}]}],null,"$L18"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"6-Sx6SAIvJypFSJWdPCFw"}
+6:["$","$L19",null,{"id":"adding-nodes"}]
+7:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Click ",["$","strong",null,{"children":"+"}]," in the top left to open the node palette. Drag a node onto the canvas or click to place it."]}]
+8:["$","h3",null,{"id":"basic-nodes","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Basic nodes",["$","$L19",null,{"id":"basic-nodes"}]]}]
+9:["$","table",null,{"className":"x:block x:overflow-x-auto nextra-scrollbar x:not-first:mt-[1.25em] x:p-0","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Node","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}],["$","th",null,{"children":"Purpose","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Initializer"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Entry point and global config (sample messages, LLM defaults)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Agent"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Generic conversable agent with full configuration","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"User"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"UserProxyAgent — human interface and code execution","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Assistant"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"AssistantAgent — LLM-powered helper","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Group"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"GroupChat container for multiple agents","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Note"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Comment on the canvas (not included in generated code)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]]}]]}]
+a:["$","h3",null,{"id":"advanced-nodes","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Advanced nodes",["$","$L19",null,{"id":"advanced-nodes"}]]}]
+b:["$","table",null,{"className":"x:block x:overflow-x-auto nextra-scrollbar x:not-first:mt-[1.25em] x:p-0","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Node","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}],["$","th",null,{"children":"Purpose","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Captain"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Agent tuned for breaking down complex tasks","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Web Surfer"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Agent that browses the web","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"DeepSeek"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Assistant preconfigured for DeepSeek models","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]]}]]}]
+c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L1a",null,{"alt":"Workflow canvas with agents","placeholder":"blur","src":{"src":"/_next/static/media/group-chat.20zfc4h2p-a4y.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAfUlEQVR42j3NsRLCIBAEUArUABLgMMYkRIaMdKbNTP7/w1agsHhzV+zOsvj54iL831UOEPoF5d7QPoLxjlDpPsL0CcZuUHop4UcrtEB9yGWMw47xucPQBuEChJnAlA2o5H0ulsaGjPU8MR0HWN3knW8z/ObKdZA0g1KGXRN+TxQwogdmVoQAAAAASUVORK5CYII="}}]}]
+d:["$","h2",null,{"id":"configuring-agents","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Configuring agents",["$","$L19",null,{"id":"configuring-agents"}]]}]
+e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Click a node to open its property panel on the right. Common settings:"}]
+f:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Human Input Mode"}]," — when the user proxy should pause for human input (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ALWAYS"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"TERMINATE"}],", or ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"NEVER"}],")"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Max Consecutive Auto Replies"}]," — how many back-and-forth turns before stopping"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"System message"}]," — instructions that shape agent behavior"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"LLM config"}]," — model and inference settings (project-wide defaults can be set in Settings → Models)"]}],"\n"]}]
+10:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Use ",["$","strong",null,{"children":"More Options"}]," on a node for advanced AG2 settings such as code execution config, termination messages, and custom functions."]}]
+11:["$","h2",null,{"id":"project-layout","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Project layout",["$","$L19",null,{"id":"project-layout"}]]}]
+12:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"A workflow editor has three main areas:"}]
+13:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Canvas"}]," — nodes and connections"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Property panel"}]," — selected node or edge settings"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Toolbar"}]," — add nodes, start chat, view Python code, toggle theme"]}],"\n"]}]
+14:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Switch between light and dark themes from the top right."}]
+15:["$","h2",null,{"id":"tips","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Tips",["$","$L19",null,{"id":"tips"}]]}]
+16:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Start every workflow with an ",["$","strong",null,{"children":"Initializer"}]," node for sample messages and shared LLM config."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Use ",["$","strong",null,{"children":"Notes"}]," to document intent for collaborators without affecting codegen."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Name nodes clearly — names become variable names in the generated Python."}],"\n"]}]
+17:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Next: ",["$","$L1b",null,{"href":"/docs/guides/build/conversation-patterns","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"Conversation Patterns"}]]}]
+18:["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]
+1e:null

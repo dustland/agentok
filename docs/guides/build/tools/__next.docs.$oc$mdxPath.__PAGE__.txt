@@ -1,0 +1,59 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+6:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+7:I[41206,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ImageZoom"]
+14:I[72799,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],""]
+15:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+5:T578,# Tools
+
+Tools extend what agents can do — call APIs, run custom Python, or trigger subflows. Agentok Studio includes a visual tool editor and a management page for reuse across workflows.
+
+## Tool editor
+
+Create tools from **Tools** in the sidebar. The editor lets you define:
+
+- **Name and description** — what the LLM sees when deciding whether to call the tool
+- **Parameters** — typed inputs the agent must supply
+- **Implementation** — Python code that runs when the tool is invoked
+
+![Tool editor](/images/screenshot/tool-editor.png)
+
+## Variables
+
+Tools can declare **variables** — values you configure per workflow or per deployment instead of hard-coding in the tool body.
+
+![Tool variable configuration](/images/screenshot/tool-config.png)
+
+Use variables for API keys, endpoints, or behavior toggles that should differ between environments.
+
+## Attaching tools to workflows
+
+After creating a tool:
+
+1. Open a workflow on the canvas.
+2. Select the **edge** between the agent that speaks and the agent that should execute the tool.
+3. Add the tool from the edge property panel.
+
+The agent will see the tool in its available function list during chat.
+
+## Public tools
+
+Tools can be marked public so other users can discover and reuse them. Manage your tools from the **Tools** page and attach them to any project you own.
+
+Next: [Code & Debugging](/docs/guides/build/code-and-logs)0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Tool editor","id":"tool-editor","depth":2},{"value":"Variables","id":"variables","depth":2},{"value":"Attaching tools to workflows","id":"attaching-tools-to-workflows","depth":2},{"value":"Public tools","id":"public-tools","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Tools","filePath":"content/guides/build/tools.md","timestamp":1783345576000},"sourceCode":"$5","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Tools","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Tools extend what agents can do — call APIs, run custom Python, or trigger subflows. Agentok Studio includes a visual tool editor and a management page for reuse across workflows."}],"\n",["$","h2",null,{"id":"tool-editor","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Tool editor",["$","$L6",null,{"id":"tool-editor"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Create tools from ",["$","strong",null,{"children":"Tools"}]," in the sidebar. The editor lets you define:"]}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Name and description"}]," — what the LLM sees when deciding whether to call the tool"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Parameters"}]," — typed inputs the agent must supply"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Implementation"}]," — Python code that runs when the tool is invoked"]}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Tool editor","placeholder":"blur","src":{"src":"/_next/static/media/tool-editor.24884ap87u6jv.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAaElEQVR42mXKywqAIBSEYSG62TE0LI1uBC2KFtGu93+xqdSdi28z87PtuDGsO2S3oCCDjLdIS42Ua/C6BzuvB9N6gtTwDdafwR+zJFcoRQepR9RND5ImsI4L8kpDKBP5Qx+QhWjmCH1ejRYwchptczYAAAAASUVORK5CYII="}}]}],"\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12"]}]]}]]}]}],null,"$L13"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"6-Sx6SAIvJypFSJWdPCFw"}
+8:["$","h2",null,{"id":"variables","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Variables",["$","$L6",null,{"id":"variables"}]]}]
+9:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Tools can declare ",["$","strong",null,{"children":"variables"}]," — values you configure per workflow or per deployment instead of hard-coding in the tool body."]}]
+a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Tool variable configuration","placeholder":"blur","src":{"src":"/_next/static/media/tool-config.330wy_rvil-rp.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAXUlEQVR42l2MSwqAMAwF2zQ/sQhWcOH97/lMK0VxMQTCvEksBiIGFX5uYF6xtQvsDUnNUVgDCUnAohBb4fUELweSaAjx7MucCzKVEONn+yDNbK/MAvHyCmP141u4AYHNKnNxgR5tAAAAAElFTkSuQmCC"}}]}]
+b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Use variables for API keys, endpoints, or behavior toggles that should differ between environments."}]
+c:["$","h2",null,{"id":"attaching-tools-to-workflows","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Attaching tools to workflows",["$","$L6",null,{"id":"attaching-tools-to-workflows"}]]}]
+d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"After creating a tool:"}]
+e:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Open a workflow on the canvas."}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Select the ",["$","strong",null,{"children":"edge"}]," between the agent that speaks and the agent that should execute the tool."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Add the tool from the edge property panel."}],"\n"]}]
+f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The agent will see the tool in its available function list during chat."}]
+10:["$","h2",null,{"id":"public-tools","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Public tools",["$","$L6",null,{"id":"public-tools"}]]}]
+11:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Tools can be marked public so other users can discover and reuse them. Manage your tools from the ",["$","strong",null,{"children":"Tools"}]," page and attach them to any project you own."]}]
+12:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Next: ",["$","$L14",null,{"href":"/docs/guides/build/code-and-logs","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"Code & Debugging"}]]}]
+13:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+17:null

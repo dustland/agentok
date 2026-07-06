@@ -1,0 +1,67 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+6:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+7:I[41206,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ImageZoom"]
+18:I[72799,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],""]
+19:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+1a:"$Sreact.suspense"
+5:T5f8,# Code & Debugging
+
+Agentok Studio is a diagram-based code generator for AG2. Everything on the canvas maps to Python you can inspect, copy, and run outside the studio.
+
+## Generated Python
+
+Click the **Python** icon in the workflow toolbar to view the generated script. The output uses the official `ag2` library and is meant to be self-contained.
+
+![Generated Python code](/images/screenshot/code-generation.png)
+
+Copy or download the code and run it as a normal Python program on your machine.
+
+## Flow data (JSON)
+
+The code view also exposes the underlying JSON representation of the workflow. Use this to:
+
+- Debug unexpected codegen output
+- Diff workflows between versions
+- Understand how node settings serialize
+
+## Runtime logs
+
+During a chat session, Agentok streams **stdout and stderr** from the AG2 runtime. Open the logs panel to see tool calls, code execution, and agent messages as they happen.
+
+![Execution logs](/images/screenshot/logs.png)
+
+Logs are essential for understanding multi-step agent runs that take seconds or minutes to complete.
+
+## Standalone chat
+
+You can also run chats in a focused view without the full canvas open:
+
+![Standalone chat view](/images/screenshot/standalone-chat.png)
+
+## Properties inspector
+
+The property panel shows the full configuration of the selected node or edge — useful when comparing what you configured in the UI with what appears in generated code.
+
+![Node properties](/images/screenshot/properties.png)
+
+Next: [Templates & Sharing](/docs/guides/build/templates)0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Generated Python","id":"generated-python","depth":2},{"value":"Flow data (JSON)","id":"flow-data-json","depth":2},{"value":"Runtime logs","id":"runtime-logs","depth":2},{"value":"Standalone chat","id":"standalone-chat","depth":2},{"value":"Properties inspector","id":"properties-inspector","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Code & Debugging","filePath":"content/guides/build/code-and-logs.md","timestamp":1783345576000},"sourceCode":"$5","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Code & Debugging","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Agentok Studio is a diagram-based code generator for AG2. Everything on the canvas maps to Python you can inspect, copy, and run outside the studio."}],"\n",["$","h2",null,{"id":"generated-python","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Generated Python",["$","$L6",null,{"id":"generated-python"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Click the ",["$","strong",null,{"children":"Python"}]," icon in the workflow toolbar to view the generated script. The output uses the official ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ag2"}]," library and is meant to be self-contained."]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Generated Python code","placeholder":"blur","src":{"src":"/_next/static/media/code-generation.42nbcsvcuz8sa.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAg0lEQVR42hXN7RJCUBhFYTMRisI5RM35MhzR/V/f6vV7r3l2MscvPswY4zDWowZD1X0o6pHyMZFsx48tRubg8c6h+4lGj+RVT1YqkrgfLGskiHJKenhTPXvSouOSt2ews8RVxoBzciFC3Q5kN8WlkGCXYBPFeY+1VoKRRr243jVp2fEHrCQz1WpcN98AAAAASUVORK5CYII="}}]}],"\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16"]}]]}]]}]}],null,"$L17"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"6-Sx6SAIvJypFSJWdPCFw"}
+8:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Copy or download the code and run it as a normal Python program on your machine."}]
+9:["$","h2",null,{"id":"flow-data-json","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Flow data (JSON)",["$","$L6",null,{"id":"flow-data-json"}]]}]
+a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The code view also exposes the underlying JSON representation of the workflow. Use this to:"}]
+b:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Debug unexpected codegen output"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Diff workflows between versions"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Understand how node settings serialize"}],"\n"]}]
+c:["$","h2",null,{"id":"runtime-logs","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Runtime logs",["$","$L6",null,{"id":"runtime-logs"}]]}]
+d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["During a chat session, Agentok streams ",["$","strong",null,{"children":"stdout and stderr"}]," from the AG2 runtime. Open the logs panel to see tool calls, code execution, and agent messages as they happen."]}]
+e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Execution logs","placeholder":"blur","src":{"src":"/_next/static/media/logs.42_6ggnv-0f03.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAa0lEQVR42lWNOxKAIAwFKUQB/4gBKnTG0vtf7xniWFi8IrM7G1WuG9puaF2AGSKmrWAOh2zZT6gKNUNtg4huSjIzRnQDscAwEIEivRUGhkHX73KrxngQeeS0csEL/Am1UKVvlgtuzvwmi/gAFeku/0hRB88AAAAASUVORK5CYII="}}]}]
+f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Logs are essential for understanding multi-step agent runs that take seconds or minutes to complete."}]
+10:["$","h2",null,{"id":"standalone-chat","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Standalone chat",["$","$L6",null,{"id":"standalone-chat"}]]}]
+11:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"You can also run chats in a focused view without the full canvas open:"}]
+12:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Standalone chat view","placeholder":"blur","src":{"src":"/_next/static/media/standalone-chat.32dn22m1qtxng.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAfklEQVR42j3NSw6CMABF0Y4NUPqBSGtpCdiYqETrwP2v7ErQODizl3eFPmZqM6P6BWkTVRs4SL9r7IxQXaLWiW44o/tEa0ekCdTKU6mIOE1XzPbS+/wffAUaMyEutzcurQxrwZUX7vnzKNjljpA2Um0JHTMyJKSPNG7cKZf5AGmrNGbylUYOAAAAAElFTkSuQmCC"}}]}]
+13:["$","h2",null,{"id":"properties-inspector","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Properties inspector",["$","$L6",null,{"id":"properties-inspector"}]]}]
+14:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The property panel shows the full configuration of the selected node or edge — useful when comparing what you configured in the UI with what appears in generated code."}]
+15:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Node properties","placeholder":"blur","src":{"src":"/_next/static/media/properties.0ywawg83hmosb.png","width":2668,"height":1816,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAaUlEQVR42lWMSQqAMAxFCw5V61hrrFVw49L7X++bBERcPDL85JnzulHUM8omoOpWuHHnGmHbiLpPMBIWHCrcuyHBugV55RUjn4EItJIGvT/UpI+MkSsijy1OvPBs2FC68BlE/Q5CZqcfD+DRLkpXAahjAAAAAElFTkSuQmCC"}}]}]
+16:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Next: ",["$","$L18",null,{"href":"/docs/guides/build/templates","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"Templates & Sharing"}]]}]
+17:["$","$L19",null,{"children":["$","$1a",null,{"name":"Next.MetadataOutlet","children":"$@1b"}]}]
+1b:null

@@ -1,0 +1,53 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+6:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+7:I[41206,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ImageZoom"]
+12:I[72799,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],""]
+13:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+14:"$Sreact.suspense"
+5:T528,# Templates & Sharing
+
+Turn a finished workflow into a reusable **template** that others can discover, fork, or chat with directly.
+
+## Publishing a template
+
+1. Open **Projects** and find the workflow you want to share.
+2. Click **Publish as Template** on the project card.
+
+![Publish as template](/images/screenshot/publish-as-template.png)
+
+Published templates get a stable public URL you can share with teammates or the community.
+
+## Discover and fork
+
+Browse published templates on the **Discover** page. From a template you can:
+
+- **Start a chat** — run the workflow without editing it
+- **Fork** — copy it into your projects and customize
+
+![Template gallery](/images/screenshot/templates.png)
+
+## Sample messages
+
+Templates and workflows can define **sample messages** on the Initializer node. These appear above the chat input so users know how to start a conversation — especially helpful for shared templates where the first prompt is not obvious.
+
+## Use cases
+
+- Share a reference implementation (planning agent, human-in-the-loop review, web research)
+- Onboard new users with a pre-built canvas they can explore
+- Let API consumers test a workflow before integrating via [REST](/docs/guides/using/api)
+
+See also: [Getting Started — Publish as Template](/docs/getting-started#publish-as-template)0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Publishing a template","id":"publishing-a-template","depth":2},{"value":"Discover and fork","id":"discover-and-fork","depth":2},{"value":"Sample messages","id":"sample-messages","depth":2},{"value":"Use cases","id":"use-cases","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Templates & Sharing","filePath":"content/guides/build/templates.md","timestamp":1783345576000},"sourceCode":"$5","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Templates & Sharing","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Turn a finished workflow into a reusable ",["$","strong",null,{"children":"template"}]," that others can discover, fork, or chat with directly."]}],"\n",["$","h2",null,{"id":"publishing-a-template","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Publishing a template",["$","$L6",null,{"id":"publishing-a-template"}]]}],"\n",["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Open ",["$","strong",null,{"children":"Projects"}]," and find the workflow you want to share."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Click ",["$","strong",null,{"children":"Publish as Template"}]," on the project card."]}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Publish as template","placeholder":"blur","src":{"src":"/_next/static/media/publish-as-template.0dwm5o_oavnyw.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAo0lEQVR42kWKyRGCMBhGU4HLiGzZSEIimyIMBw8uw9gbdVCE95SRcn4JHjy8mW95iDI2l3XjZG4cy4RjXDi6IJV2hNIZBRG2mGsg2QlUdQZZNoC5Ab8FEbHoEGKbMg1UVlANDzDtDYgowG/+QzHJrCoukNcdDOMb+ucIqmwhX4hSblFChfXFNB30r/uKrq8/AS/Cdh9MYUw/x5ishMk/b3aH6QvBNTzfBttynwAAAABJRU5ErkJggg=="}}]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Published templates get a stable public URL you can share with teammates or the community."}],"\n","$L8","\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10"]}]]}]]}]}],null,"$L11"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"6-Sx6SAIvJypFSJWdPCFw"}
+8:["$","h2",null,{"id":"discover-and-fork","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Discover and fork",["$","$L6",null,{"id":"discover-and-fork"}]]}]
+9:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Browse published templates on the ",["$","strong",null,{"children":"Discover"}]," page. From a template you can:"]}]
+a:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Start a chat"}]," — run the workflow without editing it"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Fork"}]," — copy it into your projects and customize"]}],"\n"]}]
+b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L7",null,{"alt":"Template gallery","placeholder":"blur","src":{"src":"/_next/static/media/templates.3q3n0g7b_is9h.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAA0UlEQVR42gHGADn/ACYoKKA2OTvXLzE01yotMNcqLC3XKSst1y8xM9ckJSagAGdsbb+apZ//qKal/52cmP+Yjnj/nJWH/6ijnP9lZGO/AEJITL9gaG7/Zmpv/2BjZ/9YXl7/W19h/2Fkaf88QEW/AFhcab+LkKf/j5Kh/4eMnv+Mi6b/ioqk/4mIpf9YWGe/AERJVr9hZYH/am+A/2Jnev9sb4X/bXGD/2JlhP9CRFO/ABocIIcmKjC2JCgutSQoMLQkKDC0JCgwtCQoMLQYGyGG/r9dZYnwh7UAAAAASUVORK5CYII="}}]}]
+c:["$","h2",null,{"id":"sample-messages","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Sample messages",["$","$L6",null,{"id":"sample-messages"}]]}]
+d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Templates and workflows can define ",["$","strong",null,{"children":"sample messages"}]," on the Initializer node. These appear above the chat input so users know how to start a conversation — especially helpful for shared templates where the first prompt is not obvious."]}]
+e:["$","h2",null,{"id":"use-cases","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Use cases",["$","$L6",null,{"id":"use-cases"}]]}]
+f:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Share a reference implementation (planning agent, human-in-the-loop review, web research)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Onboard new users with a pre-built canvas they can explore"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Let API consumers test a workflow before integrating via ",["$","$L12",null,{"href":"/docs/guides/using/api","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"REST"}]]}],"\n"]}]
+10:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["See also: ",["$","$L12",null,{"href":"/docs/getting-started#publish-as-template","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"Getting Started — Publish as Template"}]]}]
+11:["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]
+15:null

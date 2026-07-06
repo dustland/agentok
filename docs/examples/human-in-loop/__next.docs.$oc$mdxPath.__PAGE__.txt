@@ -1,0 +1,111 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+9:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+27:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+28:"$Sreact.suspense"
+2a:I[41206,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ImageZoom"]
+5:T103c,# Human in the Loop
+
+This tutorial provides step-by-step guidance on constructing a workflow that incorporates a human-in-the-loop approach. Utilizing the Agentok Studio template, [Human in the Loop](https://studio.agentok.ai/templates/4pbokrvi7zguv48), you can engage with it directly or fork it to tweak the flow to your specifications.
+
+The tutorial leverages the official notebooks [Simple Chat](https://github.com/microsoft/autogen/blob/main/samples/simple_chat.py) and [Human Feedback](https://github.com/microsoft/autogen/blob/main/notebook/agentchat_human_feedback.ipynb) as its foundation.
+
+## Prerequisites
+
+You’ll need access to Agentok Studio, which is accessible either [online](https://studio.agentok.ai) for immediate use or [locally on your machine](https://agentok.ai/getting-started) for a more personalized setup. This guide will focus on utilizing the online version of Agentok Studio.
+
+## Steps to Create a New Workflow
+
+### Initialize a New Workflow
+
+Begin by signing into Agentok Studio. Once logged in, opt for the 'Build from Scratch' option to establish a new Workflow.
+
+### Orchestrating Your Workflow
+
+First, clear the canvas by removing any pre-loaded sample nodes. Next, populate your workflow by adding the following nodes:
+
+- **Assistant Agent**: This will serve as the workflow's Assistant.
+- **UserProxy Agent**: Label this as `UserProxy`.
+
+Refer to the accompanying illustration to visualize the flow arrangement:
+
+![flow](./img/flow.png)
+
+### Configuring Your Agents
+
+The primary focus here is on configuring the UserProxy Agent:
+
+1. Alter the `Human Input Mode` setting to `ALWAYS`.
+
+2. Adjust the `Max Consecutive Auto Replies` to a value greater than `0`, such as `3`. This allows the UserProxy Agent to independently execute received code and dispatch the results back to the Assistant Agent.
+
+3. Click the **More Options** button on the UserProxy Agent. In the revealed dialog, activate `Code Execution Config` by marking the corresponding checkbox.
+
+4. Still within the dialog, define the termination message command as `TERMINATE` by clicking the robot icon adjacent to the input field.
+
+With these configurations, your UserProxy Agent should look like this:
+
+![UserProxy](./img/userproxy.png)
+
+The **More Options** dialog should appear as follows:
+
+![UserProxy Options](./img/userproxy-options.png)
+
+### Initiating the Workflow
+
+Launch the workflow by clicking the **Start Chat** button, located in the top right corner. Input the message `What day is it today?` within the chat interface to witness the workflow's response:
+
+![Chat](./img/chat.png)
+
+The Assistant Agent, lacking the current date data, will generate a pertinent code snippet and forward it to the UserProxy Agent. In turn, the UserProxy Agent runs the code and relays the output back to the Assistant Agent. The Assistant Agent deciphers this result and communicates the response back to the UserProxy Agent, which then delivers the final answer to the user.
+
+Upon receiving a message, the UserProxy will cue for human participation. A prompt will be displayed in the chat, and the input field will be accentuated:
+
+![Wait for Input](./img/wait-for-input.png)
+
+If you wish to execute the code snippet from the Assistant Agent, simply press 'Enter.' The system will proceed to execute the code and funnel the results back to the Assistant Agent.
+
+User can submit follow-up inquiries like `What day is tomorrow?`, and the workflow will respond accordingly.
+
+To terminate the workflow, user can input the term `exit`, prompting the system to cease operations.
+
+## Conclusion
+
+Through this tutorial, you've learned to create a human-in-the-loop chatbot capable of answering queries and executing code snippets autonomously. This system replicates the functionality akin to ChatGPT, complete with plugin support.
+
+Human intervention plays a crucial role in various scenarios, and this guide has illustrated how to seamlessly integrate this element into your workflows. By beginning with the provided sample, you are now equipped to craft and customize your very own human-in-the-loop systems, tailoring them to meet specific needs and requirements.0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Prerequisites","id":"prerequisites","depth":2},{"value":"Steps to Create a New Workflow","id":"steps-to-create-a-new-workflow","depth":2},{"value":"Initialize a New Workflow","id":"initialize-a-new-workflow","depth":3},{"value":"Orchestrating Your Workflow","id":"orchestrating-your-workflow","depth":3},{"value":"Configuring Your Agents","id":"configuring-your-agents","depth":3},{"value":"Initiating the Workflow","id":"initiating-the-workflow","depth":3},{"value":"Conclusion","id":"conclusion","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Human in the Loop","filePath":"content/examples/human-in-loop/index.md","timestamp":1783336778000},"sourceCode":"$5","children":["$L6","$L7"]}]]}]}],null,"$L8"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ttRv2v6vdWblUu5udTqzb"}
+6:["$","div",null,{"id":"nextra-skip-nav"}]
+7:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Human in the Loop","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["This tutorial provides step-by-step guidance on constructing a workflow that incorporates a human-in-the-loop approach. Utilizing the Agentok Studio template, ",["$","a",null,{"href":"https://studio.agentok.ai/templates/4pbokrvi7zguv48","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Human in the Loop",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],", you can engage with it directly or fork it to tweak the flow to your specifications."]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The tutorial leverages the official notebooks ",["$","a",null,{"href":"https://github.com/microsoft/autogen/blob/main/samples/simple_chat.py","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Simple Chat",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]," and ",["$","a",null,{"href":"https://github.com/microsoft/autogen/blob/main/notebook/agentchat_human_feedback.ipynb","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Human Feedback",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]," as its foundation."]}],"\n",["$","h2",null,{"id":"prerequisites","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Prerequisites",["$","$L9",null,{"id":"prerequisites"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["You’ll need access to Agentok Studio, which is accessible either ",["$","a",null,{"href":"https://studio.agentok.ai","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["online",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]," for immediate use or ",["$","a",null,{"href":"https://agentok.ai/getting-started","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["locally on your machine",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":["$La","$Lb"]}]]]}]," for a more personalized setup. This guide will focus on utilizing the online version of Agentok Studio."]}],"\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26"]}]
+8:["$","$L27",null,{"children":["$","$28",null,{"name":"Next.MetadataOutlet","children":"$@29"}]}]
+a:["$","path",null,{"d":"M7 17L17 7"}]
+b:["$","path",null,{"d":"M7 7h10v10"}]
+c:["$","h2",null,{"id":"steps-to-create-a-new-workflow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Steps to Create a New Workflow",["$","$L9",null,{"id":"steps-to-create-a-new-workflow"}]]}]
+d:["$","h3",null,{"id":"initialize-a-new-workflow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Initialize a New Workflow",["$","$L9",null,{"id":"initialize-a-new-workflow"}]]}]
+e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Begin by signing into Agentok Studio. Once logged in, opt for the ‘Build from Scratch’ option to establish a new Workflow."}]
+f:["$","h3",null,{"id":"orchestrating-your-workflow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Orchestrating Your Workflow",["$","$L9",null,{"id":"orchestrating-your-workflow"}]]}]
+10:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"First, clear the canvas by removing any pre-loaded sample nodes. Next, populate your workflow by adding the following nodes:"}]
+11:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Assistant Agent"}],": This will serve as the workflow’s Assistant."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"UserProxy Agent"}],": Label this as ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"UserProxy"}],"."]}],"\n"]}]
+12:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Refer to the accompanying illustration to visualize the flow arrangement:"}]
+13:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L2a",null,{"alt":"flow","placeholder":"blur","src":{"src":"/_next/static/media/flow.2qvv07sekmr06.png","width":2102,"height":1300,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAmElEQVR42h2MSwqCUAAA332CyvDz1HxPKwtFhZIIhJZthMRN2cp2naJ9dIGuN2WLmcUsRrhhjulviHYe2/OMoLCQbsNCvQncJ0LFJVJnBJlHcZL4iYOUF1bqg/ZeiDivGC6GPcfyfAzL/R0OKNVhOy1iYoaMTU2WRPRtQlfH3OolVakZTX3EoIE81TyuKfd2Td9EHPfBv38BxvxKrufeUyoAAAAASUVORK5CYII="}}]}]
+14:["$","h3",null,{"id":"configuring-your-agents","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Configuring Your Agents",["$","$L9",null,{"id":"configuring-your-agents"}]]}]
+15:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The primary focus here is on configuring the UserProxy Agent:"}]
+16:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Alter the ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Human Input Mode"}]," setting to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ALWAYS"}],"."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Adjust the ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Max Consecutive Auto Replies"}]," to a value greater than ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"0"}],", such as ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"3"}],". This allows the UserProxy Agent to independently execute received code and dispatch the results back to the Assistant Agent."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Click the ",["$","strong",null,{"children":"More Options"}]," button on the UserProxy Agent. In the revealed dialog, activate ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Code Execution Config"}]," by marking the corresponding checkbox."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Still within the dialog, define the termination message command as ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"TERMINATE"}]," by clicking the robot icon adjacent to the input field."]}],"\n"]}],"\n"]}]
+17:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"With these configurations, your UserProxy Agent should look like this:"}]
+18:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L2a",null,{"alt":"UserProxy","placeholder":"blur","src":{"src":"/_next/static/media/userproxy.1l0emj8p3txna.png","width":672,"height":740,"blurWidth":7,"blurHeight":8,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAICAYAAAA1BOUGAAAAq0lEQVR42k2Nuw6CQBBF+SMtSCxZ2F32wYIrWvkxdsbOxNJCiKUxWlnC+mnXAYyxOJnMnLkz0Sw2mMfVj3ixBecnJGyHSLsj/PqGorhDiQfxhFUv8OyMKJctlkVAZXs4PaFFB86uiFRO0gWUhoa8gyKGylOSkrcwtKmyP0iK7Jv0VYAvA6ycztq8n5JKtaOofcCmfmNFi4MUnGTC9pDiAq0bOEcvTDP2LD3gAwnHekdi/V4NAAAAAElFTkSuQmCC"}}]}]
+19:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","strong",null,{"children":"More Options"}]," dialog should appear as follows:"]}]
+1a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L2a",null,{"alt":"UserProxy Options","placeholder":"blur","src":{"src":"/_next/static/media/userproxy-options.2f260nzz_r4wr.png","width":1332,"height":720,"blurWidth":8,"blurHeight":4,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAECAYAAACzzX7wAAAAcUlEQVR42j3NQQ6CMBRF0S7FRAytDf1tlSIVaERNjBP2v5pLRwzO6CXvKhkLcVloY6BxnpOOaLdi3A/TbaiQP8j4opWBS5c424SWgpF39Ue5tBLzFxumOjyrjPYTxs/1qaBsyDzmmukHwj0d5NbTXCM7/hoy/YWuXaIAAAAASUVORK5CYII="}}]}]
+1b:["$","h3",null,{"id":"initiating-the-workflow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Initiating the Workflow",["$","$L9",null,{"id":"initiating-the-workflow"}]]}]
+1c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Launch the workflow by clicking the ",["$","strong",null,{"children":"Start Chat"}]," button, located in the top right corner. Input the message ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"What day is it today?"}]," within the chat interface to witness the workflow’s response:"]}]
+1d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L2a",null,{"alt":"Chat","placeholder":"blur","src":{"src":"/_next/static/media/chat.3108x39j58uf0.png","width":2210,"height":1490,"blurWidth":8,"blurHeight":5,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAFCAYAAAB4ka1VAAAAiUlEQVR42j2NQQ6CMAAE+ZHRRFCwgFKwSEuggiFEUEz8/xPGhoOHuc3OerkZSJQlVR0ibzmmGl+UK4ekwivtC2lGorPCD2M2u+DPdh/hKSfk9YgZnkjdI2RNUjRuoAmEckI7r4V2+lJ1C3HhrqR1eUMQa7xrM5FVA7pfMI8Pt/ub0s6csobwovkBNzlJkRsxLNQAAAAASUVORK5CYII="}}]}]
+1e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The Assistant Agent, lacking the current date data, will generate a pertinent code snippet and forward it to the UserProxy Agent. In turn, the UserProxy Agent runs the code and relays the output back to the Assistant Agent. The Assistant Agent deciphers this result and communicates the response back to the UserProxy Agent, which then delivers the final answer to the user."}]
+1f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Upon receiving a message, the UserProxy will cue for human participation. A prompt will be displayed in the chat, and the input field will be accentuated:"}]
+20:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L2a",null,{"alt":"Wait for Input","placeholder":"blur","src":{"src":"/_next/static/media/wait-for-input.2rtfov4es9haq.png","width":1268,"height":1038,"blurWidth":8,"blurHeight":7,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAAp0lEQVR42m3NzQqCQBSG4bmXsh9TJE0rkYyQMtNMCxXLxBmkhdAltOnCvwaDQGjxrM7L+cjj1aB5P7E+xFjYQWu+8n/ILiqwP99hOdH/wOXBMWXweOSebh3b8ApiWBvo5hKaYUCZqhAlGePJl6xoILpp86MOdaZhLInoCQL6woAbYiTKIEFCEeU1wozxtzkcP4EXF/AvZTtLaF6C5RVoVqJKiw5WU3wA2zlm682ljN8AAAAASUVORK5CYII="}}]}]
+21:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"If you wish to execute the code snippet from the Assistant Agent, simply press ‘Enter.’ The system will proceed to execute the code and funnel the results back to the Assistant Agent."}]
+22:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["User can submit follow-up inquiries like ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"What day is tomorrow?"}],", and the workflow will respond accordingly."]}]
+23:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["To terminate the workflow, user can input the term ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"exit"}],", prompting the system to cease operations."]}]
+24:["$","h2",null,{"id":"conclusion","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Conclusion",["$","$L9",null,{"id":"conclusion"}]]}]
+25:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Through this tutorial, you’ve learned to create a human-in-the-loop chatbot capable of answering queries and executing code snippets autonomously. This system replicates the functionality akin to ChatGPT, complete with plugin support."}]
+26:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Human intervention plays a crucial role in various scenarios, and this guide has illustrated how to seamlessly integrate this element into your workflows. By beginning with the provided sample, you are now equipped to craft and customize your very own human-in-the-loop systems, tailoring them to meet specific needs and requirements."}]
+29:null

@@ -1,0 +1,190 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+9:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+39:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+3a:"$Sreact.suspense"
+3c:I[41206,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ImageZoom"]
+5:T1970,---
+position: 1
+---
+
+# Getting Started
+
+## What is Agentok Studio
+
+Agentok Studio is a tool built for [AutoGen](https://microsoft.github.io/autogen/), a fantastic agent framework from Microsoft Research.
+
+AutoGen streamlines the process of creating multi-agent applications with its clear and user-friendly approach. Agentok Studio takes this accessibility a step further by offering visual tools that simplify the building and management of agent workflows.
+
+## Key Concepts
+
+### Agent
+
+The **Agent** is the core concept in AutoGen and Agentok Studio. For applications, this usually means a **ConversableAgent**, which includes two types: **AssistantAgent** and **UserProxyAgent**.
+
+- **Assistant Agent**
+
+  The **AssistantAgent** is your go-to helper to accomplish a task—it could be a chatbot, a code generator, or a planner—perhaps even a blend of them.
+
+- **UserProxy Agent**
+
+  The **UserProxyAgent** enables interaction with the **AssistantAgent**. It can take the form of a chatbot, a code executor, or even a human—it's quite the versatile agent.
+
+### Workflow
+
+A **Workflow** consists of a network of **Agents**. It's the foundation of any multi-agent application.
+
+A standard Workflow usually includes one **UserProxyAgent** and one or several **AssistantAgents**. The **UserProxyAgent** is your direct line of interaction, while the **AssistantAgents** work behind the scenes, collaborating to build a robust multi-agent application.
+
+### Chat
+
+Each Chat represents a live session that has been spun up from a Workflow or a AutoflowTemplate.
+
+### Workflow Template
+
+Ready to launch a Workflow? Publish it as a **AutoflowTemplate** in the [Agentok Studio Template](https://studio.agentok.ai/templates/)! Users can then deploy these templates to conjure up new Workflows or strike up chats directly on the template itself.
+
+## "Hello World"
+
+Let's jump straight in and create a simple "Hello World" flow.
+
+### Initialize a New Workflow
+
+Head over to [Agentok Studio Login](https://studio.agentok.ai/auth/login) and tap **Login as Guest** for a test run without the need to sign up.
+
+![Login](./img/login.png)
+
+It's always a good practice to login with your own social ID and create your own Workflow to play with.
+
+> [!WARNING]
+> Guest mode means your data is an open book to other guests. Sign in with your GitHub/Google/X account for a private experience.
+
+Once you're in, go to the [homepage](https://studio.agentok.ai) and hit the **Build from Scratch** button to weave a new Workflow.
+
+### Build Your First Workflow
+
+Get started by tidying up the canvas—scrap any sample nodes that are hanging about. Now, let's get crafting:
+
+1. Tap the plus sign ⨁ in the top left and ferry over an **Assistant Agent**.
+2. Next, snag a **UserProxy Agent** and drop it in place.
+3. Connect these two, and voilà—you've got flow! 🔗
+
+![node](./img/node.png)
+
+Here’s a visual to guide you through:
+
+![flow](./img/flow.png)
+
+Some key points to note:
+
+- Set **Human Input Mode** to **ALWAYS**, so human (you) can always provide feedback.
+- Set **Max Consecutive Auto-Replies** to **1**, so that if AsssitantAgent provide some code to execute, you can simply press Enter and UserProxyAgent will help to execute the code and send back the result to AssitantAgent. This is exactly what means by **Multi-Agent Collaboration**.
+- A few **Sample Messages** are provided in Config node. This is a convenient feature for your target users to get started with your Workflow.
+
+### Start Chat
+
+Fire up your flow by smashing the **Start Chat** button at the top right. Click one sample message above the Send button and watch the magic unfold in your chat window:
+
+![Chat](./img/chat.png)
+
+We know it's kinda difficult to write the first messages other than 'hi' or 'hello' in a chatbot. As you can see the samples above Send button, So we also provide a **Sample Message** feature to help you and your users get started. You can pick one to click and send.
+
+> [!TIP]
+> Though the user experience looks like a chat app, we need to clarify that multi-agent app is generally for you to solve complicated problems, so it will not get responded as fast as a chat app. You may need to wait for a few seconds or even minutes to get the final answer.
+
+### Check Python Code
+
+For developers who need to dive into more details about what is happening underhood, you can click the Python icon and check the generated Python code:
+
+![Python](./img/python.png)
+
+In most cases, the generated code has few dependencies other than AutoGen. You can copy and download the code to your local machine and run as norml console program with Python.
+
+### Publish as Template
+
+If you're happy with your flow, publish it as a template for others to use. On [Workflow](https://studio.agentok.ai/flows) page you can find your Workflow to publish:
+
+![flows](./img/flow.png)
+
+hit the **Publish as Template** button at the bottom right of the Workflow card:
+
+![publish](./img/publish-as-template.png)
+
+And then you can find your template on [Template](https://studio.agentok.ai/templates) page:
+
+![template](./img/template.png)
+
+By clicking on the template card, you can view the details of the template:
+
+![template](./img/template.png)
+
+The URL of template page is static and public, so you can share it with others to start a chat directly. You can also click the **Fork** button to build your own Workflow based on this template.
+
+## Next Steps
+
+This tutorial provided a concise overview, analogous to an introductory ChatGPT session. The dialog exchange was streamlined – a single interaction cycle swiftly delivers the intended message, concluding the UserProxyAgent demonstration effectively.
+
+Looking ahead, we plan to enhance the functionality, introducing additional features to enrich the user experience. Stay tuned for further developments!
+
+## More Readings
+
+Got a taste for Agentok Studio? Feast on these resources for seconds:
+
+- [Agentok Studio Template](https://studio.agentok.ai/templates/): Feast your eyes on a buffet of ready-to-serve templates.
+- [Agentok Studio Documentation](https://agentok.ai/): The ultimate guide to becoming a Agentok Studio whiz.
+- [Agentok Studio GitHub](https://github.com/hughlv/agentok): Peek under the hood at the source code.
+- [AutoGen Documentation](https://microsoft.github.io/autogen/): Master the art of AutoGen with this comprehensive tutorial.
+- [AutoGen Notebook](https://github.com/microsoft/autogen/tree/main/notebook): Dive into Jupyter notebooks showcasing AutoGen's prowess.0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"What is Agentok Studio","id":"what-is-agentok-studio","depth":2},{"value":"Key Concepts","id":"key-concepts","depth":2},{"value":"Agent","id":"agent","depth":3},{"value":"Workflow","id":"workflow","depth":3},{"value":"Chat","id":"chat","depth":3},{"value":"Workflow Template","id":"workflow-template","depth":3},{"value":"”Hello World”","id":"hello-world","depth":2},{"value":"Initialize a New Workflow","id":"initialize-a-new-workflow","depth":3},{"value":"Build Your First Workflow","id":"build-your-first-workflow","depth":3},{"value":"Start Chat","id":"start-chat","depth":3},{"value":"Check Python Code","id":"check-python-code","depth":3},{"value":"Publish as Template","id":"publish-as-template","depth":3},{"value":"Next Steps","id":"next-steps","depth":2},{"value":"More Readings","id":"more-readings","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"position":1,"title":"Getting Started","filePath":"content/getting-started/index.md","timestamp":1783336778000},"sourceCode":"$5","children":["$L6","$L7"]}]]}]}],null,"$L8"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ttRv2v6vdWblUu5udTqzb"}
+6:["$","div",null,{"id":"nextra-skip-nav"}]
+7:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Getting Started","$undefined"]}],"\n",["$","h2",null,{"id":"what-is-agentok-studio","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["What is Agentok Studio",["$","$L9",null,{"id":"what-is-agentok-studio"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Agentok Studio is a tool built for ",["$","a",null,{"href":"https://microsoft.github.io/autogen/","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["AutoGen",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],", a fantastic agent framework from Microsoft Research."]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"AutoGen streamlines the process of creating multi-agent applications with its clear and user-friendly approach. Agentok Studio takes this accessibility a step further by offering visual tools that simplify the building and management of agent workflows."}],"\n",["$","h2",null,{"id":"key-concepts","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Key Concepts",["$","$L9",null,{"id":"key-concepts"}]]}],"\n",["$","h3",null,{"id":"agent","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Agent",["$","$L9",null,{"id":"agent"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","strong",null,{"children":"Agent"}]," is the core concept in AutoGen and Agentok Studio. For applications, this usually means a ",["$","strong",null,{"children":"ConversableAgent"}],", which includes two types: ",["$","strong",null,{"children":"AssistantAgent"}]," and ",["$","strong",null,{"children":"UserProxyAgent"}],"."]}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","strong",null,{"children":"Assistant Agent"}]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","strong",null,{"children":"AssistantAgent"}]," is your go-to helper to accomplish a task—it could be a chatbot, a code generator, or a planner—perhaps even a blend of them."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","strong",null,{"children":"UserProxy Agent"}]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","strong",null,{"children":"UserProxyAgent"}]," enables interaction with the ",["$","strong",null,{"children":"AssistantAgent"}],". It can take the form of a chatbot, a code executor, or even a human—it’s quite the versatile agent."]}],"\n"]}],"\n"]}],"\n",["$","h3",null,{"id":"workflow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Workflow",["$","$L9",null,{"id":"workflow"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A ",["$","strong",null,{"children":"Workflow"}]," consists of a network of ","$La",". It’s the foundation of any multi-agent application."]}],"\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38"]}]
+8:["$","$L39",null,{"children":["$","$3a",null,{"name":"Next.MetadataOutlet","children":"$@3b"}]}]
+a:["$","strong",null,{"children":"Agents"}]
+b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A standard Workflow usually includes one ",["$","strong",null,{"children":"UserProxyAgent"}]," and one or several ",["$","strong",null,{"children":"AssistantAgents"}],". The ",["$","strong",null,{"children":"UserProxyAgent"}]," is your direct line of interaction, while the ",["$","strong",null,{"children":"AssistantAgents"}]," work behind the scenes, collaborating to build a robust multi-agent application."]}]
+c:["$","h3",null,{"id":"chat","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Chat",["$","$L9",null,{"id":"chat"}]]}]
+d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Each Chat represents a live session that has been spun up from a Workflow or a AutoflowTemplate."}]
+e:["$","h3",null,{"id":"workflow-template","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Workflow Template",["$","$L9",null,{"id":"workflow-template"}]]}]
+f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Ready to launch a Workflow? Publish it as a ",["$","strong",null,{"children":"AutoflowTemplate"}]," in the ",["$","a",null,{"href":"https://studio.agentok.ai/templates/","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Agentok Studio Template",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],"! Users can then deploy these templates to conjure up new Workflows or strike up chats directly on the template itself."]}]
+10:["$","h2",null,{"id":"hello-world","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["”Hello World”",["$","$L9",null,{"id":"hello-world"}]]}]
+11:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Let’s jump straight in and create a simple “Hello World” flow."}]
+12:["$","h3",null,{"id":"initialize-a-new-workflow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Initialize a New Workflow",["$","$L9",null,{"id":"initialize-a-new-workflow"}]]}]
+13:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Head over to ",["$","a",null,{"href":"https://studio.agentok.ai/auth/login","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Agentok Studio Login",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]," and tap ",["$","strong",null,{"children":"Login as Guest"}]," for a test run without the need to sign up."]}]
+14:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"Login","placeholder":"blur","src":{"src":"/_next/static/media/login.2h3dpdk6k7o3h.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAjElEQVR42m2KMQ6CMBhGewcTB02AtEWB1sYiuAjKoCbG2bgQjsM5OAR7j9Hj/PCXhAWGl3z53iOU807pzEaJsiyMHZRH9hifrB/QjgShNEIXIM4jeiJxuwSfSUM8JgweMr1DVrzhcns5iR+6OVDXCr7NHz71D1T+WAYiLSGvng7cc7DZ7tudd+jXQDcAMuJC04s5IKMAAAAASUVORK5CYII="}}]}]
+15:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"It’s always a good practice to login with your own social ID and create your own Workflow to play with."}]
+16:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"[!WARNING]\nGuest mode means your data is an open book to other guests. Sign in with your GitHub/Google/X account for a private experience."}],"\n"]}]
+17:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Once you’re in, go to the ",["$","a",null,{"href":"https://studio.agentok.ai","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["homepage",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]," and hit the ",["$","strong",null,{"children":"Build from Scratch"}]," button to weave a new Workflow."]}]
+18:["$","h3",null,{"id":"build-your-first-workflow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Build Your First Workflow",["$","$L9",null,{"id":"build-your-first-workflow"}]]}]
+19:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Get started by tidying up the canvas—scrap any sample nodes that are hanging about. Now, let’s get crafting:"}]
+1a:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Tap the plus sign ⨁ in the top left and ferry over an ",["$","strong",null,{"children":"Assistant Agent"}],"."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Next, snag a ",["$","strong",null,{"children":"UserProxy Agent"}]," and drop it in place."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Connect these two, and voilà—you’ve got flow! 🔗"}],"\n"]}]
+1b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"node","placeholder":"blur","src":{"src":"/_next/static/media/node.3bom_dgc58ixz.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAv0lEQVR42h2LTQqCQABG5w5Bi6IsJ3X6GxqzKcuxEvovkMBOEF2ivdAtOkBL93OMOc6XuHiLx+ORnud8xUyaIRfGYQNDnb6xHWbYkBtaNsLDpZbxCWIZI7z58NUKkyCDkClcPtGEy41Wxwf8dYTdy8PqckCifljIDyw61mQ0VTral8c8QbTZQsVX7LZvBLMn2nSkCWVCT6MTgjBBlqa436447w8Y+wq2yzWp1Zt5o+0WTcstOjarsLpe5S2rl/8BEetHijh92BIAAAAASUVORK5CYII="}}]}]
+1c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Here’s a visual to guide you through:"}]
+1d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"flow","placeholder":"blur","src":{"src":"/_next/static/media/flow.0nbysfvwtri2w.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAuUlEQVR42i2MTQqCQACFvUPQpmLMv6Yia0RrlPzPhRFTgrTuCC06g7cQOoR7jzHHeRm1+BaP9/EpxsJ8M28v1zaTJl1J3VxKzaSSrm2pD59CGeuZn2N7iMHPLtzcw86t4OxrWLbTK6qx6Q+JAAtSZI8VoruLJGwR8haq7v0EP6vA+AlBlOAYFSjSFzh/gui7fyEVcAbhdhGohcC1LOF4MTTL7pXReNJMiNV9IRrt1AEyX3TTYc+I0XwAxWBHA1j3UIwAAAAASUVORK5CYII="}}]}]
+1e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Some key points to note:"}]
+1f:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Set ",["$","strong",null,{"children":"Human Input Mode"}]," to ",["$","strong",null,{"children":"ALWAYS"}],", so human (you) can always provide feedback."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Set ",["$","strong",null,{"children":"Max Consecutive Auto-Replies"}]," to ",["$","strong",null,{"children":"1"}],", so that if AsssitantAgent provide some code to execute, you can simply press Enter and UserProxyAgent will help to execute the code and send back the result to AssitantAgent. This is exactly what means by ",["$","strong",null,{"children":"Multi-Agent Collaboration"}],"."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["A few ",["$","strong",null,{"children":"Sample Messages"}]," are provided in Config node. This is a convenient feature for your target users to get started with your Workflow."]}],"\n"]}]
+20:["$","h3",null,{"id":"start-chat","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Start Chat",["$","$L9",null,{"id":"start-chat"}]]}]
+21:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Fire up your flow by smashing the ",["$","strong",null,{"children":"Start Chat"}]," button at the top right. Click one sample message above the Send button and watch the magic unfold in your chat window:"]}]
+22:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"Chat","placeholder":"blur","src":{"src":"/_next/static/media/chat.0tpxm8jn8fwri.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAvklEQVR42i3MyQ2CQABGYXow8eIBFBgGXMcgiguiuMWYEYzExLhVYGIT1EERc6eMKedXo4d3+/IUwzJz1vNkvcWkSR2pm7bUiS3tRlsaFskVyljB/Ajt/hSDrQtv5WGVnjFep6i7fqFoRrPohxxsOMP84SA4dbBJntjELzTd8Af8eQI2WGAYhBhNI4TLGJNoB9pg/8OMo/sB8Y7juI9xuNzAr3cEfF0opXIlq6hEfFNrVGg6FVXiCNV0hEas7A0n5Uh1L+GtZwAAAABJRU5ErkJggg=="}}]}]
+23:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["We know it’s kinda difficult to write the first messages other than ‘hi’ or ‘hello’ in a chatbot. As you can see the samples above Send button, So we also provide a ",["$","strong",null,{"children":"Sample Message"}]," feature to help you and your users get started. You can pick one to click and send."]}]
+24:["$","blockquote",null,{"className":"x:not-first:mt-[1.25em] x:border-gray-300 x:italic x:text-gray-700 x:dark:border-gray-700 x:dark:text-gray-400 x:border-s-2 x:ps-[1.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"[!TIP]\nThough the user experience looks like a chat app, we need to clarify that multi-agent app is generally for you to solve complicated problems, so it will not get responded as fast as a chat app. You may need to wait for a few seconds or even minutes to get the final answer."}],"\n"]}]
+25:["$","h3",null,{"id":"check-python-code","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Check Python Code",["$","$L9",null,{"id":"check-python-code"}]]}]
+26:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"For developers who need to dive into more details about what is happening underhood, you can click the Python icon and check the generated Python code:"}]
+27:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"Python","placeholder":"blur","src":{"src":"/_next/static/media/python.16qhf8nisaam5.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAg0lEQVR42mXKQQqDMBBA0ZzAgoGEoibOJI4RSUvpHT2Hh+g+x5jjTAOF2uLir/5TGHC/P568rJkjzYyRGAIxpZU9wK5GhJJvWea0CMZJAGMtCIZJrl1X1ND3hagOAHHO/WWMKcq5oQIS7/23A9gPmNMBxh9gbQWtbjdrzUtrfappLtsbjF06re3lX10AAAAASUVORK5CYII="}}]}]
+28:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"In most cases, the generated code has few dependencies other than AutoGen. You can copy and download the code to your local machine and run as norml console program with Python."}]
+29:["$","h3",null,{"id":"publish-as-template","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Publish as Template",["$","$L9",null,{"id":"publish-as-template"}]]}]
+2a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["If you’re happy with your flow, publish it as a template for others to use. On ",["$","a",null,{"href":"https://studio.agentok.ai/flows","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Workflow",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]," page you can find your Workflow to publish:"]}]
+2b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"flows","placeholder":"blur","src":"$1d:props:children:props:src"}]}]
+2c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["hit the ",["$","strong",null,{"children":"Publish as Template"}]," button at the bottom right of the Workflow card:"]}]
+2d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"publish","placeholder":"blur","src":{"src":"/_next/static/media/publish-as-template.0dwm5o_oavnyw.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAo0lEQVR42kWKyRGCMBhGU4HLiGzZSEIimyIMBw8uw9gbdVCE95SRcn4JHjy8mW95iDI2l3XjZG4cy4RjXDi6IJV2hNIZBRG2mGsg2QlUdQZZNoC5Ab8FEbHoEGKbMg1UVlANDzDtDYgowG/+QzHJrCoukNcdDOMb+ucIqmwhX4hSblFChfXFNB30r/uKrq8/AS/Cdh9MYUw/x5ishMk/b3aH6QvBNTzfBttynwAAAABJRU5ErkJggg=="}}]}]
+2e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["And then you can find your template on ",["$","a",null,{"href":"https://studio.agentok.ai/templates","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Template",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]," page:"]}]
+2f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"template","placeholder":"blur","src":{"src":"/_next/static/media/template.2ocx41ddu02l3.png","width":2446,"height":1956,"blurWidth":8,"blurHeight":6,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAu0lEQVR42m2MuwqCYACFfYegoaCsNCrTLmaJkpeEUgKJMKQ7FLREQy/R0hYtTTn1BO3/Y/yPc9JaGw4c+D4+pshxUVs1aEMxqdBUaU2SaUVo0ZrYpmyxFDGFskh6hgvNHkN3fPRsF5JiQuxYYPk6Yfhqi1xvdzxeT+xOZ4w2DobBAX3niDwXCywvEm+yhD/bwg3mmK5ChOs9LG/xE3IlgdRlE1KcbHQtyNoAiu58f8KYVDp7yeTK739L2AdyB0nGpNnJKAAAAABJRU5ErkJggg=="}}]}]
+30:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"By clicking on the template card, you can view the details of the template:"}]
+31:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","$L3c",null,{"alt":"template","placeholder":"blur","src":"$2f:props:children:props:src"}]}]
+32:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The URL of template page is static and public, so you can share it with others to start a chat directly. You can also click the ",["$","strong",null,{"children":"Fork"}]," button to build your own Workflow based on this template."]}]
+33:["$","h2",null,{"id":"next-steps","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Next Steps",["$","$L9",null,{"id":"next-steps"}]]}]
+34:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"This tutorial provided a concise overview, analogous to an introductory ChatGPT session. The dialog exchange was streamlined – a single interaction cycle swiftly delivers the intended message, concluding the UserProxyAgent demonstration effectively."}]
+35:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Looking ahead, we plan to enhance the functionality, introducing additional features to enrich the user experience. Stay tuned for further developments!"}]
+36:["$","h2",null,{"id":"more-readings","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["More Readings",["$","$L9",null,{"id":"more-readings"}]]}]
+37:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Got a taste for Agentok Studio? Feast on these resources for seconds:"}]
+38:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","a",null,{"href":"https://studio.agentok.ai/templates/","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Agentok Studio Template",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],": Feast your eyes on a buffet of ready-to-serve templates."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","a",null,{"href":"https://agentok.ai/","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Agentok Studio Documentation",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],": The ultimate guide to becoming a Agentok Studio whiz."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","a",null,{"href":"https://github.com/hughlv/agentok","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["Agentok Studio GitHub",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],": Peek under the hood at the source code."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","a",null,{"href":"https://microsoft.github.io/autogen/","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["AutoGen Documentation",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],": Master the art of AutoGen with this comprehensive tutorial."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","a",null,{"href":"https://github.com/microsoft/autogen/tree/main/notebook","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["AutoGen Notebook",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],": Dive into Jupyter notebooks showcasing AutoGen’s prowess."]}],"\n"]}]
+3b:null

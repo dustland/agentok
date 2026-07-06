@@ -1,0 +1,66 @@
+1:"$Sreact.fragment"
+2:I[14667,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"TOCProvider"]
+3:I[19008,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"Sidebar"]
+4:I[6976,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"ClientWrapper"]
+6:I[59219,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"HeadingAnchor"]
+17:I[72799,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],""]
+18:I[50129,["/_next/static/chunks/1_krm8koo9r4n.js","/_next/static/chunks/3aie2w8og8cw_.js","/_next/static/chunks/1fwxc1m--n0qn.js","/_next/static/chunks/19dc7pd4yx21w.js","/_next/static/chunks/3z44aihh8g570.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+5:T6d6,---
+id: tos
+title: 'Terms of Service'
+slug: /tos
+---
+
+# Terms of Service
+
+**Effective Date: 12/9/2023**
+
+## Introduction
+
+Welcome to Agentok Studio ("us", "we", or "our"). Our website, accessible at [https://studio.agentok.ai](https://studio.agentok.ai), provides an enhanced suite of visual tools designed to complement AutoGen, the advanced agent framework from Microsoft Research.
+
+Agentok Studio builds on AutoGen's streamlined approach for creating multi-agent applications by offering an intuitive visual interface that simplifies the construction and administration of these complex agent workflows, making the power of AutoGen more accessible than ever.
+
+Your use of our Site and Service is subject to these Terms of Service ("Terms"). By accessing or using the Service, you agree to be bound by these Terms.
+
+## Privacy
+
+We may collect and use information in accordance with our Privacy Policy, which you should refer to for more information on how we handle data.
+
+## License
+
+Our project is open source under Apache 2.0 with additional terms and conditions, which lets others remix, adapt, and build upon your work non-commercially, as long as they credit you and license their new creations under identical terms.
+
+## User Obligations
+
+By using Agentok Studio, you agree not to:
+
+- Misuse our services for any illegal or unauthorized purposes
+- Infringe upon the intellectual property rights of others
+- Collect any personally identifiable information without consent
+
+## Changes to Terms
+
+We reserve the right to modify these terms at any time, and we will notify you of any material changes before they take effect.
+
+## Contact Us
+
+If you have any questions about these terms, please contact us at [hi@agentok.ai](mailto:hi@agentok.ai).0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Introduction","id":"introduction","depth":2},{"value":"Privacy","id":"privacy","depth":2},{"value":"License","id":"license","depth":2},{"value":"User Obligations","id":"user-obligations","depth":2},{"value":"Changes to Terms","id":"changes-to-terms","depth":2},{"value":"Contact Us","id":"contact-us","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"id":"tos","title":"Terms of Service","slug":"/tos","filePath":"content/legal/tos.md","timestamp":1783336778000},"sourceCode":"$5","children":[["$","div",null,{"id":"nextra-skip-nav"}],["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Terms of Service","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$","strong",null,{"children":"Effective Date: 12/9/2023"}]}],"\n",["$","h2",null,{"id":"introduction","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Introduction",["$","$L6",null,{"id":"introduction"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Welcome to Agentok Studio (“us”, “we”, or “our”). Our website, accessible at ",["$","a",null,{"href":"https://studio.agentok.ai","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["https://studio.agentok.ai",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":["$L7","$L8"]}]]]}],", provides an enhanced suite of visual tools designed to complement AutoGen, the advanced agent framework from Microsoft Research."]}],"\n","$L9","\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15"]}]]}]]}]}],null,"$L16"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ttRv2v6vdWblUu5udTqzb"}
+7:["$","path",null,{"d":"M7 17L17 7"}]
+8:["$","path",null,{"d":"M7 7h10v10"}]
+9:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Agentok Studio builds on AutoGen’s streamlined approach for creating multi-agent applications by offering an intuitive visual interface that simplifies the construction and administration of these complex agent workflows, making the power of AutoGen more accessible than ever."}]
+a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Your use of our Site and Service is subject to these Terms of Service (“Terms”). By accessing or using the Service, you agree to be bound by these Terms."}]
+b:["$","h2",null,{"id":"privacy","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Privacy",["$","$L6",null,{"id":"privacy"}]]}]
+c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"We may collect and use information in accordance with our Privacy Policy, which you should refer to for more information on how we handle data."}]
+d:["$","h2",null,{"id":"license","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["License",["$","$L6",null,{"id":"license"}]]}]
+e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Our project is open source under Apache 2.0 with additional terms and conditions, which lets others remix, adapt, and build upon your work non-commercially, as long as they credit you and license their new creations under identical terms."}]
+f:["$","h2",null,{"id":"user-obligations","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["User Obligations",["$","$L6",null,{"id":"user-obligations"}]]}]
+10:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"By using Agentok Studio, you agree not to:"}]
+11:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Misuse our services for any illegal or unauthorized purposes"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Infringe upon the intellectual property rights of others"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Collect any personally identifiable information without consent"}],"\n"]}]
+12:["$","h2",null,{"id":"changes-to-terms","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Changes to Terms",["$","$L6",null,{"id":"changes-to-terms"}]]}]
+13:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"We reserve the right to modify these terms at any time, and we will notify you of any material changes before they take effect."}]
+14:["$","h2",null,{"id":"contact-us","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Contact Us",["$","$L6",null,{"id":"contact-us"}]]}]
+15:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["If you have any questions about these terms, please contact us at ",["$","$L17",null,{"href":"mailto:hi@agentok.ai","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"hi@agentok.ai"}],"."]}]
+16:["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]
+1a:null

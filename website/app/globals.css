@@ -1,0 +1,155 @@
+:root {
+  font-size: 15px;
+  --agentok-accent: #37981f;
+  --agentok-accent-strong: #276a16;
+  --agentok-border: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+html.dark {
+  --agentok-accent: #9fe88d;
+  --agentok-accent-strong: #48c628;
+}
+
+body {
+  letter-spacing: 0;
+}
+
+.agentok-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.agentok-logo img {
+  width: 28px;
+  height: 28px;
+}
+
+.home-page {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 64px;
+}
+
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.74fr) minmax(360px, 1.26fr);
+  gap: 40px;
+  align-items: center;
+  min-height: calc(100vh - 190px);
+}
+
+.home-hero__copy {
+  min-width: 0;
+}
+
+.home-hero__logo {
+  width: 86px;
+  height: 86px;
+  margin-bottom: 24px;
+}
+
+.home-hero h1 {
+  margin: 0;
+  font-size: clamp(3rem, 5vw, 5.4rem);
+  line-height: 0.98;
+  font-weight: 800;
+}
+
+.home-hero p {
+  max-width: 620px;
+  margin: 24px 0 0;
+  font-size: 1.18rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, currentColor 76%, transparent);
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.home-hero__actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid var(--agentok-accent);
+  border-radius: 6px;
+  color: var(--agentok-accent-strong);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.home-hero__actions a:first-child {
+  background: var(--agentok-accent);
+  color: #ffffff;
+}
+
+.home-hero__image {
+  width: 100%;
+  border: 1px solid var(--agentok-border);
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgb(0 0 0 / 16%);
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.home-feature {
+  border-top: 1px solid var(--agentok-border);
+  padding-top: 24px;
+}
+
+.home-feature img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+}
+
+.home-feature h2 {
+  margin: 14px 0 8px;
+  font-size: 1.2rem;
+}
+
+.home-feature p {
+  margin: 0;
+  line-height: 1.6;
+  color: color-mix(in srgb, currentColor 72%, transparent);
+}
+
+.api-docs-page {
+  min-height: calc(100vh - 160px);
+}
+
+#redoc-container {
+  min-height: calc(100vh - 160px);
+}
+
+html.dark .redoc-wrap,
+html.dark .redoc-wrap .menu-content,
+html.dark .redoc-wrap .sidebar-container {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+html.dark .redoc-wrap a {
+  color: #59a6ff;
+}
+
+@media (max-width: 960px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .home-features {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,6 +1,6 @@
 # Website
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This website is built using [Nextra](https://nextra.site/) on top of Next.js.
 
 ### Installation
 
@@ -11,23 +11,15 @@ $ pnpm install
 ### Local Development
 
 ```
-$ pnpm start
+$ pnpm dev
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This command starts a local development server on port 1578. Most changes are reflected live without having to restart the server.
 
 ### Deployment
 
-Using SSH:
-
 ```
-$ USE_SSH=true pnpm run deploy
+$ pnpm build
 ```
 
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> pnpm run deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+The static export is written to `out/`.

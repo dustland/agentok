@@ -1,25 +1,13 @@
 # Website
 
-This website is built using [Nextra](https://nextra.site/) on top of Next.js.
+Documentation site for [Agentok Studio](https://agentok.ai), built with [Nextra](https://nextra.site/) on Next.js.
 
-### Installation
-
-```
-$ pnpm install
-```
-
-### Local Development
-
-```
-$ pnpm dev
+```bash
+pnpm install
+pnpm dev    # http://localhost:1578
+pnpm build  # static export to out/
 ```
 
-This command starts a local development server on port 1578. Most changes are reflected live without having to restart the server.
+Content lives in `content/`. Pages are served under `/docs/*`.
 
-### Deployment
-
-```
-$ pnpm build
-```
-
-The static export is written to `out/`.
+For running the full Agentok stack locally, see the root [README.md](../README.md).

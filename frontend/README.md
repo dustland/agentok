@@ -1,27 +1,34 @@
 # Frontend of Agentok Studio
 
-## Getting Started
+Next.js studio UI for building AG2 workflows visually.
 
-Before run the server, please rename `.env.sample` to `.env.local` and set the value of variables
+## Getting started
 
-First, run the development server:
+1. Copy environment variables:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+cp .env.sample .env.local
+```
+
+2. Install dependencies and start the dev server:
+
+```bash
+pnpm install
 pnpm dev
 ```
 
-## Analyze
+3. Open [http://localhost:2855](http://localhost:2855).
+
+The API must be running at `NEXT_PUBLIC_BACKEND_URL` (default `http://127.0.0.1:5004`). See the root [README.md](../README.md) for full stack setup.
+
+> If you see frequent `useContext` server errors, remove `--turbo` from the `dev` script in `package.json`.
+
+## Bundle analysis
 
 ```bash
 ANALYZE=true pnpm build
 ```
 
-Open [http://localhost:2855](http://localhost:2855) with your browser to see the result.
-
 ## Deployment
 
-Please refer to [README.md](../README.md) for deployment related information.
+See [README.md](../README.md) for Docker and production deployment.

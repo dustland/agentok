@@ -6,126 +6,98 @@ position: 1
 
 ## What is Agentok Studio
 
-Agentok Studio is a tool built for [AutoGen](https://microsoft.github.io/autogen/), a fantastic agent framework from Microsoft Research.
+Agentok Studio is a visual builder for [AG2](https://github.com/ag2ai/ag2) (formerly AutoGen), a multi-agent framework from Microsoft Research and the AG2 community.
 
-AutoGen streamlines the process of creating multi-agent applications with its clear and user-friendly approach. Agentok Studio takes this accessibility a step further by offering visual tools that simplify the building and management of agent workflows.
+AG2 streamlines the creation of multi-agent applications. Agentok Studio adds a drag-and-drop canvas for designing agent workflows, running chats, and exporting self-contained Python code.
 
 ## Key Concepts
 
 ### Agent
 
-The **Agent** is the core concept in AutoGen and Agentok Studio. For applications, this usually means a **ConversableAgent**, which includes two types: **AssistantAgent** and **UserProxyAgent**.
+The **Agent** is the core concept in AG2 and Agentok Studio. For most applications this means a **ConversableAgent**, which includes two common types: **AssistantAgent** and **UserProxyAgent**.
 
-- **Assistant Agent**
-
-  The **AssistantAgent** is your go-to helper to accomplish a task—it could be a chatbot, a code generator, or a planner—perhaps even a blend of them.
-
-- **UserProxy Agent**
-
-  The **UserProxyAgent** enables interaction with the **AssistantAgent**. It can take the form of a chatbot, a code executor, or even a human—it's quite the versatile agent.
+- **Assistant Agent** — LLM-powered helper (chatbot, coder, planner, or a mix)
+- **UserProxy Agent** — human interface, code executor, or both
 
 ### Workflow
 
-A **Workflow** consists of a network of **Agents**. It's the foundation of any multi-agent application.
-
-A standard Workflow usually includes one **UserProxyAgent** and one or several **AssistantAgents**. The **UserProxyAgent** is your direct line of interaction, while the **AssistantAgents** work behind the scenes, collaborating to build a robust multi-agent application.
+A **Workflow** is a network of agents on the canvas. Most workflows have one UserProxy and one or more Assistants.
 
 ### Chat
 
-Each Chat represents a live session that has been spun up from a Workflow or a AutoflowTemplate.
+A **Chat** is a live session started from a workflow.
 
-### Workflow Template
+### Template
 
-Ready to launch a Workflow? Publish it as a **AutoflowTemplate** in the [Agentok Studio Template](https://studio.agentok.ai/templates/)! Users can then deploy these templates to conjure up new Workflows or strike up chats directly on the template itself.
+A published workflow others can fork or run via a shareable link.
 
 ## "Hello World"
 
-Let's jump straight in and create a simple "Hello World" flow.
+### Sign in and create a project
 
-### Initialize a New Workflow
-
-Head over to [Agentok Studio Login](https://studio.agentok.ai/auth/login) and tap **Login as Guest** for a test run without the need to sign up.
+Go to [studio.agentok.ai](https://studio.agentok.ai/auth/login) and sign in with **GitHub**, **Google**, or email.
 
 ![Login](./img/login.png)
 
-It's always a good practice to login with your own social ID and create your own Workflow to play with.
+Open **Projects** and click **Build from Scratch** to create a new workflow.
 
-> [!WARNING]
-> Guest mode means your data is an open book to other guests. Sign in with your GitHub/Google/X account for a private experience.
+### Build your first workflow
 
-Once you're in, go to the [homepage](https://studio.agentok.ai) and hit the **Build from Scratch** button to weave a new Workflow.
+Clear any sample nodes, then:
 
-### Build Your First Workflow
+1. Click **+** and add an **Assistant** agent.
+2. Add a **User** agent.
+3. Connect them with an edge.
 
-Get started by tidying up the canvas—scrap any sample nodes that are hanging about. Now, let's get crafting:
+![Adding nodes](./img/node.png)
 
-1. Tap the plus sign ⨁ in the top left and ferry over an **Assistant Agent**.
-2. Next, snag a **UserProxy Agent** and drop it in place.
-3. Connect these two, and voilà—you've got flow! 🔗
+![Completed flow](./img/flow.png)
 
-![node](./img/node.png)
+Recommended settings:
 
-Here’s a visual to guide you through:
+- **Human Input Mode** → `ALWAYS` so you can intervene at any time
+- **Max Consecutive Auto Replies** → `1` for a simple assistant ↔ user proxy loop
+- Add **Sample Messages** on the Initializer node so users have prompts to click
 
-![flow](./img/flow.png)
+### Start a chat
 
-Some key points to note:
-
-- Set **Human Input Mode** to **ALWAYS**, so human (you) can always provide feedback.
-- Set **Max Consecutive Auto-Replies** to **1**, so that if AsssitantAgent provide some code to execute, you can simply press Enter and UserProxyAgent will help to execute the code and send back the result to AssitantAgent. This is exactly what means by **Multi-Agent Collaboration**.
-- A few **Sample Messages** are provided in Config node. This is a convenient feature for your target users to get started with your Workflow.
-
-### Start Chat
-
-Fire up your flow by smashing the **Start Chat** button at the top right. Click one sample message above the Send button and watch the magic unfold in your chat window:
+Click **Start Chat** in the toolbar. Pick a sample message and send it:
 
 ![Chat](./img/chat.png)
 
-We know it's kinda difficult to write the first messages other than 'hi' or 'hello' in a chatbot. As you can see the samples above Send button, So we also provide a **Sample Message** feature to help you and your users get started. You can pick one to click and send.
-
 > [!TIP]
-> Though the user experience looks like a chat app, we need to clarify that multi-agent app is generally for you to solve complicated problems, so it will not get responded as fast as a chat app. You may need to wait for a few seconds or even minutes to get the final answer.
+> Multi-agent runs can take seconds or minutes. Check [Code & Debugging](/docs/guides/build/code-and-logs) if you need to see what is happening under the hood.
 
-### Check Python Code
+### Inspect the generated code
 
-For developers who need to dive into more details about what is happening underhood, you can click the Python icon and check the generated Python code:
+Click the Python icon in the toolbar:
 
-![Python](./img/python.png)
+![Generated Python](./img/python.png)
 
-In most cases, the generated code has few dependencies other than AutoGen. You can copy and download the code to your local machine and run as norml console program with Python.
+The script depends on AG2 only. Copy or download it and run locally.
 
-### Publish as Template
+### Publish as a template
 
-If you're happy with your flow, publish it as a template for others to use. On [Workflow](https://studio.agentok.ai/flows) page you can find your Workflow to publish:
+From **Projects**, open a workflow card and click **Publish as Template**:
 
-![flows](./img/flow.png)
+![Projects list](./img/flows.png)
 
-hit the **Publish as Template** button at the bottom right of the Workflow card:
+![Publish dialog](./img/publish-as-template.png)
 
-![publish](./img/publish-as-template.png)
+Published templates appear on **Discover**:
 
-And then you can find your template on [Template](https://studio.agentok.ai/templates) page:
+![Template page](./img/template.png)
 
-![template](./img/template.png)
+Share the URL so others can chat or fork your workflow.
 
-By clicking on the template card, you can view the details of the template:
+## Next steps
 
-![template](./img/template.png)
+- [Studio Features](/docs/guides/build) — canvas, patterns, tools, codegen, templates
+- [Concepts](/docs/concepts) — AG2 terminology
+- [Ask Planner example](/docs/examples/ask-planner) — subflows with custom functions
+- [API](/docs/guides/using/api) — integrate chats programmatically
 
-The URL of template page is static and public, so you can share it with others to start a chat directly. You can also click the **Fork** button to build your own Workflow based on this template.
+## Further reading
 
-## Next Steps
-
-This tutorial provided a concise overview, analogous to an introductory ChatGPT session. The dialog exchange was streamlined – a single interaction cycle swiftly delivers the intended message, concluding the UserProxyAgent demonstration effectively.
-
-Looking ahead, we plan to enhance the functionality, introducing additional features to enrich the user experience. Stay tuned for further developments!
-
-## More Readings
-
-Got a taste for Agentok Studio? Feast on these resources for seconds:
-
-- [Agentok Studio Template](https://studio.agentok.ai/templates/): Feast your eyes on a buffet of ready-to-serve templates.
-- [Agentok Studio Documentation](https://agentok.ai/): The ultimate guide to becoming a Agentok Studio whiz.
-- [Agentok Studio GitHub](https://github.com/hughlv/agentok): Peek under the hood at the source code.
-- [AutoGen Documentation](https://microsoft.github.io/autogen/): Master the art of AutoGen with this comprehensive tutorial.
-- [AutoGen Notebook](https://github.com/microsoft/autogen/tree/main/notebook): Dive into Jupyter notebooks showcasing AutoGen's prowess.
+- [AG2 documentation](https://docs.ag2.ai/)
+- [Agentok Studio GitHub](https://github.com/dustland/agentok)

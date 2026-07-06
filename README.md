@@ -64,11 +64,11 @@ We also attached the original logs(stdout and stderr) from AG2 execution, so you
 
 Visit [https://studio.agentok.ai](https://studio.agentok.ai) to quickly explore Agentok Studio's features. While we offer an online deployment, please note that it is not intended for production use. The service level agreement is not guaranteed, and stored data may be wiped due to breaking changes.
 
-After logging in as a Guest or with your OAuth2 account, click **Create New Project** to start a new project. Each new project comes with a sample workflow. Switch to the **Chat** tab to begin the conversation.
+After signing in with GitHub, Google, or email, click **Create New Project** to start a new project. Each new project comes with a sample workflow. Switch to the **Chat** tab to begin the conversation.
 
 ![group-chat](./frontend/public/images/screenshot/group-chat.png)
 
-For a more in-depth look at the project, please refer to [Getting Started](https://agentok.ai/getting-started).
+For a more in-depth look at the project, see [Getting Started](https://agentok.ai/docs/getting-started) and [Studio Features](https://agentok.ai/docs/guides/build).
 
 ## 🐳 Run Locally (with Docker)
 
@@ -110,10 +110,10 @@ For development or running from source:
 
 1. Navigate to the frontend directory: `cd frontend`
 2. Rename `.env.sample` to `.env.local` and configure variables
-3. Install dependencies: `pnpm install` or `yarn`
-4. Start the development server: `pnpm dev` or `yarn dev`
+3. Install dependencies: `pnpm install`
+4. Start the development server: `pnpm dev`
 
-> Note: If you encounter frequent Server Errors related to 'useContext', try removing `--turbo` from the **dev** command in package.json.
+> Note: If you encounter frequent Server Errors related to `useContext`, try removing `--turbo` from the **dev** command in package.json.
 
 ### Backend Services
 
@@ -122,18 +122,13 @@ For development or running from source:
 3. Install Poetry
 4. Start the service: `poetry run uvicorn agentok_api.main:app --reload --port 5004`
 
-`REPLICATE_API_TOKEN` is required for LLaVa agent functionality.
+`REPLICATE_API_TOKEN` is required for LLaVA agent functionality.
 
-**IMPORTANT**: AG2's latest version requires Docker for code execution by default. Either:
-
-1. Install Docker locally, OR
-2. Set `AUTOGEN_USE_DOCKER=False` in `api/.env`
-
-Note: Docker requirement is disabled by default in our dockerized deployment.
+**IMPORTANT**: AG2 can use Docker for code execution. Either install Docker locally, or set `AUTOGEN_USE_DOCKER=False` in `api/.env`.
 
 ### Database Services
 
-This project uses Supabase for authentication and data storage. Follow [./db/README.md](./db/README.md) to prepare the database and set environment variables (SUPABASE\_\* in .env.sample).
+This project uses Supabase for authentication and data storage. Follow [./db/README.md](./db/README.md) to prepare the database and set environment variables (`SUPABASE_*` in `.env.sample`).
 
 Once services are running, access:
 

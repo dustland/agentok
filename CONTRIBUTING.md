@@ -50,7 +50,7 @@ You can join our Slack or Discord(COMMUNICATION_PLATFORM_LINK) to discuss the pr
 
 ## Setting Up Your Environment
 
-Before you start on your contribution, you'll need to set up your environment for development. See the `README.md` for instructions on getting started.
+Before you start on your contribution, set up your environment using the root `README.md`.
 
 ## Community
 

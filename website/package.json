@@ -4,6 +4,7 @@
   "description": "Agentok Studio",
   "license": "Apache-2.0",
   "private": true,
+  "packageManager": "pnpm@10.32.1",
   "scripts": {
     "dev": "next dev --webpack -p 1578",
     "start": "next start -p 1578",

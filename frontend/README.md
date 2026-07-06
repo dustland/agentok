@@ -23,12 +23,18 @@ The API must be running at `NEXT_PUBLIC_BACKEND_URL` (default `http://127.0.0.1:
 
 > If you see frequent `useContext` server errors, remove `--turbo` from the `dev` script in `package.json`.
 
+## Production deployment
+
+There is no Dockerfile for the frontend. Deploy as a standard Next.js app and set these environment variables **before the build**:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_BACKEND_URL`
+
+`NEXT_PUBLIC_*` values are embedded in the client bundle at build time. Changing them in your hosting dashboard after a deploy has no effect until you trigger a new build.
+
 ## Bundle analysis
 
 ```bash
 ANALYZE=true pnpm build
 ```
-
-## Deployment
-
-See [README.md](../README.md) for Docker and production deployment.

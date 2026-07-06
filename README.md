@@ -70,52 +70,44 @@ After signing in with GitHub, Google, or email, click **Create New Project** to 
 
 For a more in-depth look at the project, see [Getting Started](https://agentok.ai/docs/getting-started) and [Studio Features](https://agentok.ai/docs/guides/build).
 
-## 🐳 Run Locally (with Docker)
+## 🐳 Run the API with Docker (optional)
 
-The project consists of a Frontend (built with Next.js) and Backend service (built with FastAPI in Python), both fully dockerized.
+The API can be run in Docker. The frontend is a standard Next.js app — run it with `pnpm dev` locally or deploy to a platform like Railway without a Dockerfile.
 
-Before running the project, create `.env` files in both the `frontend` and `api` directories:
+Before starting, prepare the API environment:
 
 ```bash
-cp frontend/.env.sample frontend/.env
 cp api/.env.sample api/.env
 cp api/OAI_CONFIG_LIST.sample api/OAI_CONFIG_LIST
 ```
 
-Note: Supabase provides both **anon** and **service_role** keys for each project. Use the anon key for `NEXT_PUBLIC_SUPABASE_ANON_KEY` (frontend) and service role key for `SUPABASE_SERVICE_KEY` (backend).
-
-The easiest way to run locally is using docker-compose:
+Start the API with docker-compose:
 
 ```bash
 docker-compose up -d
 ```
 
-You can also build and run the UI and service separately with Docker:
+Or build and run the API image directly:
 
 ```bash
 docker build -t agentok-api ./api
-docker run -d -p 5004:5004 agentok-api
-
-docker build -t agentok-frontend ./frontend
-docker run -d -p 2855:2855 agentok-frontend
+docker run -d -p 5004:5004 --env-file api/.env agentok-api
 ```
 
-(Port 2855 represents our first office address.)
-
-## 🛠️ Run Locally (Without Docker)
-
-For development or running from source:
+## 🛠️ Run Locally
 
 ### Frontend
 
 1. Navigate to the frontend directory: `cd frontend`
-2. Rename `.env.sample` to `.env.local` and configure variables
+2. Copy `.env.sample` to `.env.local` and configure variables
 3. Install dependencies: `pnpm install`
 4. Start the development server: `pnpm dev`
 
 > Note: If you encounter frequent Server Errors related to `useContext`, try removing `--turbo` from the **dev** command in package.json.
 
-### Backend Services
+For production, set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_BACKEND_URL` in your hosting provider's environment variables before building. These values are baked into the Next.js bundle at build time.
+
+### Backend
 
 1. Navigate to the api directory: `cd api`
 2. Rename `.env.sample` to `.env` and `OAI_CONFIG_LIST.sample` to `OAI_CONFIG_LIST`
@@ -126,9 +118,9 @@ For development or running from source:
 
 **IMPORTANT**: AG2 can use Docker for code execution. Either install Docker locally, or set `AUTOGEN_USE_DOCKER=False` in `api/.env`.
 
-### Database Services
-
 This project uses Supabase for authentication and data storage. Follow [./db/README.md](./db/README.md) to prepare the database and set environment variables (`SUPABASE_*` in `.env.sample`).
+
+Use the **anon** key for `NEXT_PUBLIC_SUPABASE_ANON_KEY` (frontend) and the **service role** key for `SUPABASE_SERVICE_KEY` (API).
 
 Once services are running, access:
 

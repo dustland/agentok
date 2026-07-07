@@ -4,6 +4,7 @@ import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 import { stripMatch } from '@/lib/re';
 import { StatusMessage } from '@/lib/chat';
+import { getUserProxyNodeName } from '@/lib/flow';
 import { Message } from '@/types/chat';
 import { useChat, useUser } from '@/hooks';
 import {
@@ -33,13 +34,7 @@ interface MessageBubbleProps {
 const MessageBubble = ({ chat, message, className }: MessageBubbleProps) => {
   const { chatSource } = useChat(chat.id);
   const { user } = useUser();
-  const userNodeName =
-    chatSource?.flow?.nodes?.find(
-      (node: any) =>
-        node.data.type === 'UserProxyAgent' ||
-        node.data.type === 'RetrieveUserProxyAgent' ||
-        node.data.name.includes('User')
-    )?.data?.name ?? '';
+  const userNodeName = getUserProxyNodeName(chatSource?.flow?.nodes);
   let waitForHumanInput = false;
 
   // End of thinking

@@ -49,6 +49,27 @@ export const isConversable = (node?: Node) =>
     'websurfer',
   ].includes(node.type);
 
+export const isUserProxyNode = (node: any) => {
+  const data = node?.data;
+  if (node?.type === 'user' || node?.type === 'retrieve_user') {
+    return true;
+  }
+  if (!data) return false;
+
+  const agentClass = data.type ?? data.class ?? data.class_type;
+  if (
+    agentClass === 'UserProxyAgent' ||
+    agentClass === 'RetrieveUserProxyAgent'
+  ) {
+    return true;
+  }
+
+  return typeof data.name === 'string' && data.name.includes('User');
+};
+
+export const getUserProxyNodeName = (nodes: any[] | undefined) =>
+  nodes?.find(isUserProxyNode)?.data?.name ?? '';
+
 // Fields of Node Meta:
 // - name: To be used as variable name in generated code
 // - label: Shown on UI, the value is the key for i18n

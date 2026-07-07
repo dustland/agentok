@@ -7,7 +7,6 @@ import {
   ResizablePanelGroup,
 } from '@/components/ui/resizable';
 import { ChatList } from '@/components/chat/chat-list';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 export default function ChatsLayout({
   children,
@@ -15,23 +14,31 @@ export default function ChatsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col w-screen h-screen bg-muted">
+    <div className="flex h-screen w-screen flex-col bg-background">
       <Navbar />
-      <div className="h-[calc(100vh-var(--header-height))] overflow-hidden">
+      <div className="h-[calc(100vh-var(--header-height))] overflow-hidden p-2 md:p-3">
         <ResizablePanelGroup direction="horizontal" className="h-full">
           <ResizablePanel
-            defaultSize={20}
-            minSize={15}
-            maxSize={30}
-            className="h-full"
+            defaultSize={24}
+            minSize={18}
+            maxSize={32}
+            className="h-full min-w-[220px]"
           >
-            <ScrollArea className="h-full">
+            <div className="flex h-full flex-col rounded-2xl border bg-card/70 shadow-sm">
+              <div className="border-b px-4 py-3">
+                <h1 className="text-sm font-semibold">Chats</h1>
+                <p className="text-xs text-muted-foreground">
+                  Recent conversations and their current status.
+                </p>
+              </div>
               <ChatList />
-            </ScrollArea>
+            </div>
           </ResizablePanel>
           <ResizableHandle />
-          <ResizablePanel defaultSize={80}>
-            <ScrollArea className="h-full">{children}</ScrollArea>
+          <ResizablePanel defaultSize={76}>
+            <div className="h-full overflow-hidden rounded-2xl border bg-card/50 shadow-sm">
+              {children}
+            </div>
           </ResizablePanel>
         </ResizablePanelGroup>
       </div>

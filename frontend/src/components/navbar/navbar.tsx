@@ -66,15 +66,15 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex w-full items-center justify-between p-2 h-[var(--header-height)] border-b">
-      <div className="navbar-start gap-2 flex items-center justify-start">
+    <div className="sticky top-0 z-40 flex h-[var(--header-height)] w-full items-center justify-between border-b bg-background/85 px-3 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+      <div className="navbar-start flex items-center justify-start gap-2">
         <NavButton projectId={projectId} className="lg:hidden" />
-        <Link href="/projects" className="flex items-center">
+        <Link href="/projects" className="flex items-center gap-2">
           <Logo className="w-7 h-7 text-primary/70 mr-2" />
-          <span className="text-brand font-mono">Agentok</span>
+          <span className="font-mono font-semibold text-primary/90">Agentok</span>
         </Link>
       </div>
-      <div className="flex px-2 items-center gap-4 lg:gap-6 text-muted-foreground">
+      <div className="flex min-w-0 items-center gap-3 px-2 text-muted-foreground lg:gap-5">
         <ProjectPicker
           className={cn({ 'text-primary': isActive('/projects') })}
         />
@@ -86,7 +86,7 @@ const Navbar = () => {
               key={item.id}
               href={item.href}
               className={cn(
-                'flex items-center text-sm py-1 gap-1.5 hover:text-primary font-medium',
+                'flex items-center gap-1.5 py-1 text-sm font-medium hover:text-primary',
                 {
                   'text-primary': isActive(item.href),
                 },
@@ -99,12 +99,12 @@ const Navbar = () => {
           );
         })}
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         <Link
           href="https://github.com/dustland/agentok"
           aria-label="github"
           target="_blank"
-          className="hidden md:block"
+          className="hidden lg:block"
         >
           <img src={githubUrl} alt="github" className="h-5" />
         </Link>

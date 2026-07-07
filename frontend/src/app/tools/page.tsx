@@ -61,18 +61,21 @@ const Page = () => {
 
   return (
     <div className="drawer drawer-end">
-      <div className="drawer-content flex flex-col p-2 gap-4">
-        <div className="flex items-center gap-4 p-2 border-b border-base-content/10">
-          <Icons.tool className="w-12 h-12" />
-          <div className="flex flex-col gap-2">
-            <div className="text-2xl font-bold">Tools</div>
-            <div className="">
-              Manage your custom tools and discover public tools
+      <div className="drawer-content app-page">
+        <div className="app-page-header">
+          <div className="flex items-start gap-4">
+            <Icons.tool className="mt-1 w-10 h-10 text-primary/80" />
+            <div className="flex flex-col gap-2">
+              <div className="app-page-title text-2xl md:text-3xl">Tools</div>
+              <div className="app-page-description">
+                Manage your custom tools, configure variables, and discover
+                reusable public tools.
+              </div>
             </div>
           </div>
         </div>
         {['all', 'public'].includes(filter) && publicTools.length > 0 && (
-          <div className="flex flex-col gap-2">
+          <div className="app-surface flex flex-col gap-4 p-4 md:p-6">
             <div className="text-lg font-bold">Public Tools</div>
             <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {publicTools.map((tool, index) => (
@@ -89,9 +92,9 @@ const Page = () => {
           </div>
         )}
         {['all', 'custom'].includes(filter) && (
-          <div className="flex flex-col gap-4">
+          <div className="app-surface flex flex-col gap-4 p-4 md:p-6">
             <div className="text-lg font-bold">Custom Tools</div>
-            <div className="text-sm text-base-content/50">
+            <div className="text-sm text-muted-foreground">
               Create and manage your own custom tools
             </div>
             <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

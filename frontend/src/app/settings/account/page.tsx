@@ -8,9 +8,14 @@ const AccountPage = () => {
   if (loading || !user) return <Loading />;
 
   return (
-    <div className="w-full p-2">
-      <h1 className="text-xl font-bold mb-4">Account</h1>
-      <div className="flex flex-col gap-6 border rounded-lg p-6 w-full ">
+    <div className="app-page max-w-4xl">
+      <div className="app-page-header">
+        <h1 className="app-page-title text-2xl md:text-3xl">Account</h1>
+        <p className="app-page-description">
+          Review your profile details and connected identity information.
+        </p>
+      </div>
+      <div className="app-surface flex w-full flex-col gap-6 p-6">
         <div className="avatar">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img

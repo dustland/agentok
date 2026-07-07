@@ -18,7 +18,7 @@ export default function ChatPage({
     }
   }, [chatId, activeChatId, setActiveChatId]);
   return (
-    <div className="flex flex-col h-[calc(100vh-var(--header-height))]">
+    <div className="flex h-[calc(100vh-var(--header-height)-1rem)] flex-col">
       <ChatPane projectId={-1} chatId={chatId} />
     </div>
   );

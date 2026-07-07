@@ -42,25 +42,25 @@ const DiscoverPage = ({ params }: { params: Promise<{ id: string }> }) => {
   }
 
   return (
-    <div className="relative flex flex-col w-full h-full gap-2 p-4 overflow-y-auto items-center">
+    <div className="app-page">
       <title>Template | Agentok Studio</title>
-      <div className="flex flex-col items-center justify-center gap-2 text-sm p-2">
-        <span className="text-5xl font-bold p-4">{template.name}</span>
-        <span className="text-lg p-4 font-normal max-w-5xl">
+      <div className="app-page-header items-center text-center">
+        <span className="app-page-title">{template.name}</span>
+        <div className="app-page-description max-w-4xl">
           <Markdown>{template.description}</Markdown>
-        </span>
+        </div>
       </div>
-      <div className="flex flex-col md:flex-row items-center justify-center w-full h-full gap-2 text-sm">
+      <div className="grid w-full gap-4 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)]">
         <TemplateCard
           template={template}
           index={index}
           suppressLink
-          className="w-full max-w-sm h-full min-h-[420px]"
+          className="h-full min-h-[420px] w-full"
         />
         <ReactFlowProvider key="reactflow-template">
           <FlowPreview
             template={template}
-            className="max-w-2xl min-h-[420px] bg-base-content/10 border border-base-content/5 rounded-xl"
+            className="min-h-[420px] rounded-2xl border bg-card/60 shadow-sm"
           />
         </ReactFlowProvider>
       </div>

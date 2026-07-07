@@ -34,31 +34,43 @@ export default function Page() {
     router.push(`/projects/${project.id}`);
   };
   return (
-    <div className="flex flex-col w-full gap-2">
+    <div className="app-page">
       <title>Projects | Agentok Studio</title>
-      <div className="flex flex-col items-center justify-center gap-4 text-sm p-2">
-        <span className="text-4xl font-bold font-arial p-4">
-          Build Agentic Apps
+      <div className="app-page-header">
+        <span className="app-page-title">Build Agentic Apps</span>
+        <span className="app-page-description">
+          Create, iterate, and share multi-agent workflows with a visual AG2
+          studio.
         </span>
-        <span className="text-lg">
-          Create and manage your AI agent projects with Agentok Studio.
-        </span>
-        <Button size="lg" onClick={onCreateProject}>
-          <Icons.project />
-          Create New Project
-        </Button>
+        <div>
+          <Button size="lg" onClick={onCreateProject}>
+            <Icons.project />
+            Create New Project
+          </Button>
+        </div>
+      </div>
+      <div className="app-surface p-4 md:p-6">
         <ProjectList />
       </div>
-      <div className="flex flex-col items-center justify-center gap-2 text-sm py-8 mb-12">
-        <div className="divider text-2xl text-center">Or</div>
-        <span className="text-2xl p-4">Start from a Template</span>
+      <div className="app-page-header items-center text-center">
+        <span className="text-sm font-medium uppercase tracking-[0.2em] text-muted-foreground">
+          Or
+        </span>
+        <span className="text-2xl font-semibold">Start from a template</span>
+        <span className="app-page-description">
+          Browse proven workflows and fork one to get moving faster.
+        </span>
+      </div>
+      <div className="app-surface p-4 md:p-6">
         <TemplateList maxCount={3} />
-        <Link
-          href="/discover"
-          className="btn btn-primary btn-lg btn-outline text-lg mt-8"
-        >
-          Discover More Templates
-        </Link>
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="/discover"
+            className="inline-flex items-center justify-center rounded-md border px-5 py-3 text-sm font-medium transition-colors hover:bg-accent"
+          >
+            Discover More Templates
+          </Link>
+        </div>
       </div>
     </div>
   );

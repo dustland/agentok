@@ -61,7 +61,7 @@ export const ChatList = ({ className }: ChatListProps) => {
         await deleteChat(chatId);
 
         if (activeChatId === chatId) {
-          router.replace(newChatId ? `/chats/${newChatId}` : '/chat');
+          router.replace(newChatId ? `/chats/${newChatId}` : '/chats');
         }
       } catch (error) {
         console.error('Error deleting chat:', error);
@@ -84,24 +84,26 @@ export const ChatList = ({ className }: ChatListProps) => {
   );
 
   return (
-    <ScrollArea className={cn('flex flex-col h-full p-1 w-full', className)}>
+    <ScrollArea className={cn('h-full w-full', className)}>
       {chats.length === 0 ? (
-        <div className="flex items-center justify-center w-full h-full">
-          <div className="text-sm text-muted-foreground">No Chat Yet</div>
+        <div className="flex h-full w-full items-center justify-center p-6">
+          <div className="text-sm text-muted-foreground">No chats yet</div>
         </div>
       ) : (
-        <div className="flex flex-col gap-1 pr-2">
+        <div className="flex flex-col gap-2 p-2">
           {chats.map((chat) => (
             <Card
               key={chat.id}
               onClick={() => handleSelectChat(chat.id)}
               className={cn(
-                'relative flex items-center gap-2 p-2 border-transparent bg-transparent shadow-none hover:bg-primary/80 hover:text-primary-foreground transition-all duration-500 rounded-md group cursor-pointer',
-                activeChatId === chat.id && 'bg-primary text-primary-foreground'
+                'relative cursor-pointer rounded-xl border bg-background/70 p-3 shadow-none transition-colors',
+                'hover:border-primary/30 hover:bg-accent/70',
+                activeChatId === chat.id &&
+                  'border-primary/40 bg-primary/8 ring-1 ring-primary/20'
               )}
             >
               {editingId === chat.id ? (
-                <div className="flex items-center gap-1 flex-1">
+                <div className="flex flex-1 items-center gap-1">
                   <Input
                     value={editingName}
                     onChange={(e) => setEditingName(e.target.value)}
@@ -120,27 +122,50 @@ export const ChatList = ({ className }: ChatListProps) => {
                     variant="ghost"
                     size="icon"
                     className="w-7 h-7"
-                    onClick={() => handleEditName(chat.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEditName(chat.id);
+                    }}
                   >
                     <Icons.check className="w-4 h-4" />
                   </Button>
                 </div>
               ) : (
-                <div className="group flex-1 justify-start">
-                  <span className="text-sm line-clamp-1">
-                    {chat.name ||
-                      `Chat with ${chat.from_project || chat.from_template}`}
-                  </span>
+                <div className="group flex min-w-0 flex-1 flex-col gap-2">
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="line-clamp-1 min-w-0 text-sm font-medium">
+                      {chat.name ||
+                        `Chat with ${chat.from_project || chat.from_template}`}
+                    </span>
+                    <span className="shrink-0 rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">
+                      {chat.status || 'ready'}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                    <span className="line-clamp-1 min-w-0">
+                      {chat.from_project
+                        ? `Project #${chat.from_project}`
+                        : chat.from_template
+                          ? `Template #${chat.from_template}`
+                          : 'No source'}
+                    </span>
+                    <span className="shrink-0">
+                      {chat.updated_at
+                        ? new Date(chat.updated_at).toLocaleDateString()
+                        : ''}
+                    </span>
+                  </div>
                   <div
                     className={cn(
-                      'hidden group-hover:flex absolute p-2 justify-end right-0 top-0 bottom-0 items-center gap-2'
+                      'absolute right-2 top-2 hidden items-center gap-1 rounded-lg border bg-background/95 p-1 shadow-sm group-hover:flex'
                     )}
                   >
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="w-5 h-5 text-muted"
-                      onClick={() => {
+                      className="h-7 w-7"
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setEditingId(chat.id);
                         setEditingName(chat.name || '');
                       }}
@@ -154,8 +179,11 @@ export const ChatList = ({ className }: ChatListProps) => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="w-5 h-5"
-                      onClick={() => handleDeleteChat(chat.id)}
+                      className="h-7 w-7"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteChat(chat.id);
+                      }}
                     >
                       {isDeleting ? (
                         <Icons.spinner className="w-3 h-3 animate-spin text-red-500" />

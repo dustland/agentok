@@ -27,14 +27,14 @@ export const JsonViewer = ({ projectId, className }: JsonViewerProps) => {
   }, [project]);
 
   return (
-    <ScrollArea className={cn('relative flex w-full h-full', className)}>
-      <div className="flex items-center justify-between">
+    <ScrollArea className={cn('relative h-full w-full', className)}>
+      <div className="relative min-h-full w-full">
         <div className="absolute top-12 right-4 z-10">
           <CopyButton content={jsonString} />
         </div>
         <CodeMirror
           value={jsonString}
-          height="100%"
+          height="calc(100vh - var(--header-height) - 8rem)"
           theme={resolvedTheme === 'dark' ? vscodeDark : vscodeLight}
           extensions={[json()]}
           editable={false}

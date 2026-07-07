@@ -30,7 +30,12 @@ export const Sidebar = ({ pathPrefix, items, className }: SidebarProps) => {
   const isMedium = useMediaQuery('only screen and (max-width : 769px)');
 
   return (
-    <div className={cn('flex flex-col gap-2 md:w-48 h-full', className)}>
+    <div
+      className={cn(
+        'flex h-full shrink-0 flex-col gap-2 overflow-y-auto md:w-56',
+        className
+      )}
+    >
       {items.map((item) => {
         const path = pathPrefix ? `${pathPrefix}${item.path}` : item.path;
         const isActive = isParentPath(pathname, path);
@@ -41,7 +46,7 @@ export const Sidebar = ({ pathPrefix, items, className }: SidebarProps) => {
             key={item.name}
             variant={isActive ? 'secondary' : 'ghost'}
             className={cn(
-              'w-full justify-start gap-2',
+              'w-full justify-start gap-2 rounded-xl',
               isMedium && 'px-2',
               !isMedium && 'px-4'
             )}

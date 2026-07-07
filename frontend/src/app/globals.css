@@ -94,7 +94,52 @@
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
   }
+}
+
+@layer components {
+  .app-page {
+    @apply mx-auto flex w-full max-w-7xl flex-col gap-6 p-4 md:p-6;
+  }
+
+  .app-page-header {
+    @apply flex flex-col gap-2 rounded-2xl border bg-card/60 p-5 shadow-sm backdrop-blur-sm;
+  }
+
+  .app-page-title {
+    @apply text-3xl font-semibold tracking-tight md:text-4xl;
+  }
+
+  .app-page-description {
+    @apply max-w-3xl text-sm text-muted-foreground md:text-base;
+  }
+
+  .app-surface {
+    @apply rounded-2xl border bg-card/60 shadow-sm backdrop-blur-sm;
+  }
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.18);
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* Override the default behavior */

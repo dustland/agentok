@@ -10,13 +10,12 @@ import { ChatPane } from '../chat/chat-pane';
 import { FlowConfig } from './flow-config';
 import { JsonViewer } from './json';
 import { useEdges, useNodes } from '@xyflow/react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useChats } from '@/hooks';
 import { ChatLogPane } from '../chat/chat-logs';
 import { PythonViewer } from './python';
 
 export const FlowEditor = ({ projectId }: { projectId: number }) => {
-  const [mode, setMode] = useState<'flow' | 'python'>('flow');
   const { chats } = useChats();
   const nodes = useNodes();
   const edges = useEdges();
@@ -30,10 +29,6 @@ export const FlowEditor = ({ projectId }: { projectId: number }) => {
     setActiveChatId(existingChat?.id || -1);
   }, [projectId, chats]);
 
-  const handleModeChange = (mode: 'flow' | 'python') => {
-    setMode(mode);
-  };
-
   return (
     <div className="flex h-[calc(100vh-var(--header-height))]">
       <ResizablePanelGroup direction="horizontal" className="flex h-full">
@@ -43,16 +38,13 @@ export const FlowEditor = ({ projectId }: { projectId: number }) => {
           minSize={30}
         >
           <Tabs defaultValue="flow" className="relative flex flex-col h-full">
-            <TabsContent value="flow" className="flex-1 overflow-auto mt-0">
-              <FlowCanvas
-                projectId={projectId}
-                onModeChange={handleModeChange}
-              />
+            <TabsContent value="flow" className="mt-0 flex-1 overflow-auto">
+              <FlowCanvas projectId={projectId} onModeChange={() => {}} />
             </TabsContent>
-            <TabsContent value="python" className="flex-1 overflow-auto mt-0">
+            <TabsContent value="python" className="mt-0 flex-1 overflow-hidden">
               <PythonViewer projectId={projectId} />
             </TabsContent>
-            <TabsContent value="code" className="flex-1 overflow-auto mt-0">
+            <TabsContent value="code" className="mt-0 flex-1 overflow-hidden">
               <JsonViewer projectId={projectId} />
             </TabsContent>
             <TabsList className="absolute top-0 right-0 flex items-center rounded-none rounded-bl-md border-b border-l justify-start">

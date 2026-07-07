@@ -1,7 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { Sidebar, SidebarItem } from './sidebar';
 import { cn } from '@/lib/utils';
-import { ScrollArea } from '@radix-ui/react-scroll-area';
 
 type SidebarLayoutProps = {
   pathPrefix?: string;
@@ -16,15 +15,17 @@ const SidebarLayout = ({
   return (
     <div
       className={cn(
-        'flex h-[calc(100vh-var(--header-height))] w-full gap-2 overflow-hidden'
+        'flex h-[calc(100vh-var(--header-height))] w-full gap-3 overflow-hidden p-2 md:p-3'
       )}
     >
       <Sidebar
         items={sidebarItems}
         pathPrefix={pathPrefix}
-        className="p-2 border-r"
+        className="rounded-2xl border bg-card/70 p-2 shadow-sm"
       />
-      <div className="flex flex-1 h-full w-full">{children}</div>
+      <div className="app-surface flex h-full w-full flex-1 overflow-hidden">
+        {children}
+      </div>
     </div>
   );
 };

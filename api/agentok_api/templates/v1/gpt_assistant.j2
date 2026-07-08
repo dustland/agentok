@@ -1,0 +1,20 @@
+{# gpt_assistant.j2 — GPTAssistantAgent removed in AG2 1.0; treat as standard Agent #}
+{%- macro generate_gpt_assistants(gpt_assistant_nodes) %}
+{%- if gpt_assistant_nodes %}
+# GPTAssistantAgent is not available in AG2 1.0 — generating standard Agents instead
+{%- for node in gpt_assistant_nodes %}
+node_{{ node.id }} = Agent(
+    name="{{ node.data.name }}",
+    {%- if node.data.instructions %}
+    prompt="""{{ node.data.instructions }}""",
+    {%- elif node.data.system_message %}
+    prompt="""{{ node.data.system_message }}""",
+    {%- else %}
+    prompt="You are a helpful AI assistant.",
+    {%- endif %}
+    config=default_config,
+    observers=make_studio_observer("{{ node.data.name }}", "peer"),
+)
+{%- endfor %}
+{%- endif %}
+{%- endmacro %}

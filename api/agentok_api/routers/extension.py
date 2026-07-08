@@ -34,7 +34,7 @@ router = APIRouter()
                 },
             },
             summary="Retrieve extended agents",  # Short summary for the operation
-            description="""Fetch the list of extended agents currently loaded by the service, usually subclass of ConversableAgent.""",
+            description="""Fetch the list of extended agents currently loaded by the service, usually subclass of ExtendedAgent (AG2 1.0).""",
             )
 async def api_get_agents(service: ExtensionService = Depends(get_extension_service)):
     return service.load_extensions()

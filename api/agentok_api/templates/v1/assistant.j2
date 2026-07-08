@@ -1,0 +1,36 @@
+{%- macro generate_assistants(assistant_nodes) %}
+# Assistant Agents (AG2 1.0 Agent)
+{%- for node in assistant_nodes %}
+{%- set obs_name = node.data.name | default(node.id) %}
+{%- set tools_list = [] %}
+{%- if node.data.class_type == 'WebSurferAgent' %}
+{%- set _ = tools_list.append('WebSearchTool()') %}
+{%- set _ = tools_list.append('WebFetchTool()') %}
+{%- endif %}
+node_{{ node.id }} = Agent(
+    name="{{ node.data.name }}",
+    {%- if node.data.system_message %}
+    prompt="""{{ node.data.system_message }}""",
+    {%- elif node.data.instructions %}
+    prompt="""{{ node.data.instructions }}""",
+    {%- elif node.data.description %}
+    prompt="""{{ node.data.description }}""",
+    {%- else %}
+    prompt="You are a helpful AI assistant.",
+    {%- endif %}
+    {%- if node.data.model_id %}
+    config=get_config("{{ node.data.model_id }}"),
+    {%- else %}
+    config=default_config,
+    {%- endif %}
+    {%- if node.data.human_input_mode and node.data.human_input_mode != 'NEVER' %}
+    hitl_hook=studio_hitl_hook,
+    {%- endif %}
+    observers=make_studio_observer("{{ obs_name }}", "peer"),
+    {%- if node.data.class_type == 'WebSurferAgent' %}
+    tools=[WebSearchTool(), WebFetchTool()],
+    {%- endif %}
+)
+{%- endfor %}
+
+{%- endmacro %}

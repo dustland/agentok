@@ -1,84 +1,77 @@
-# This file is generated with Agentok Studio.
-# Last generated: 2025-01-07 09:57:34
-#
-# Project Name: Awesome Project
-# Author: Unknown (hi@agentok.ai)
-# Last Updated: 2025-01-05T05:06:32.939037+00:00
-# Description:
-"""
-A new project with sample flow.
-"""
+"""Illustrative AG2 1.0 flow-shaped script (hand-written mirror of Studio codegen)."""
 
-
-
-from dotenv import load_dotenv, dotenv_values
-load_dotenv()  # This will load all environment variables from .env
-
-import argparse
+import asyncio
+import json
 import os
-import time
-from termcolor import colored
-from typing import Annotated
-
-# Parse command line arguments
-parser = argparse.ArgumentParser(description='Start a chat with agents.')
-parser.add_argument('message', type=str, help='The message to send to agent.')
-args = parser.parse_args()
-
-import autogen
-
-# openai, whisper are optional dependencies
-# However, we beleive they are useful for other future examples, so we include them here as part of standard imports
-from autogen import AssistantAgent
-from autogen import UserProxyAgent
-
-# Replace the default get_human_input function for status control
-def custom_get_human_input(self, prompt: str) -> str:
-    # Set wait_for_human_input to True
-    print('__STATUS_WAIT_FOR_HUMAN_INPUT__', prompt, flush=True)
-    reply = input(prompt)
-    # Restore the status to running
-    print('__STATUS_RECEIVED_HUMAN_INPUT__', prompt, flush=True)
-    return reply
-
-# autogen.ConversableAgent.get_human_input = custom_get_human_input
-
-# Get the directory of the current script
-current_dir = os.path.dirname(os.path.abspath(__file__))
-
-config_list = autogen.config_list_from_json(
-    env_or_file="OAI_CONFIG_LIST",
-)
-
-llm_config = {
-    "config_list": config_list,
-}
-
 import tempfile
+
+import ag2
+from ag2 import Agent
+from ag2.knowledge import MemoryKnowledgeStore
+from ag2.network import EV_CHANNEL_CLOSED, Hub, Passport, Resume
+
+from agentok_api.ag2_compat.config_loader import load_model_configs
+from agentok_api.ag2_compat.hitl import studio_hitl_hook
+from agentok_api.ag2_compat.studio_observer import make_studio_observer
+from ag2.tools import SandboxCodeTool
+from ag2.tools.sandbox import LocalEnvironment
+
+print("ag2", ag2.__version__)
+
 temp_dir = tempfile.gettempdir()
 
-# Conversable Agents
 
-node_assistant_q2FNbPZN = AssistantAgent(
-    name="Assistant",
-    llm_config=llm_config,
-)
-node_user_UTIV5vKy = UserProxyAgent(
-    name="User",
-    code_execution_config={ # Make code excution always available for user_proxy nodes
-        "last_n_messages": 2,
-        "work_dir": os.path.join(temp_dir, "user_code"),
-        "use_docker": False,
-    },
-    llm_config=llm_config,
-)
-# Group Chats
-# Nested Chats
-# Tools
-# Start the conversation
+async def main() -> None:
+    message = os.environ.get("AGENTOK_MESSAGE", "Hello from flow2py.")
+    configs = load_model_configs()
+    if not configs:
+        raise SystemExit("Configure OAI_CONFIG_LIST before running.")
 
-# Talk to one single agent
-chat_result = node_user_UTIV5vKy.initiate_chat(
-    node_assistant_q2FNbPZN,
-    message=args.message,
-)
+    assistant = Agent(
+        "Assistant",
+        prompt="You are a helpful assistant.",
+        config=configs[0],
+        observers=make_studio_observer("Assistant", "User"),
+    )
+    user = Agent(
+        "User",
+        config=None,
+        hitl_hook=studio_hitl_hook,
+        tools=[SandboxCodeTool(LocalEnvironment(os.path.join(temp_dir, "user_code")))],
+        observers=make_studio_observer("User", "Assistant"),
+    )
+
+    hub = await Hub.open(MemoryKnowledgeStore())
+    user_c = await hub.register(user, Passport(name=user.name), Resume())
+    asst_c = await hub.register(assistant, Passport(name=assistant.name), Resume())
+
+    channel = await user_c.open(type="consulting", target=asst_c.agent_id)
+    await channel.send(message)
+    await user_c.wait_for_channel_event(
+        channel_id=channel.channel_id,
+        predicate=lambda e: e.event_type == EV_CHANNEL_CLOSED,
+        timeout=120.0,
+    )
+
+    history = []
+    for envelope in await hub.read_wal(channel.channel_id):
+        text = (envelope.event_data or {}).get("text") or ""
+        if text:
+            history.append({"role": "assistant", "content": text})
+    print(
+        "__CHAT_RESULT__",
+        json.dumps(
+            {
+                "chat_id": channel.channel_id,
+                "chat_history": history,
+                "summary": history[-1]["content"] if history else "",
+                "cost": {},
+                "human_input": [],
+            }
+        ),
+    )
+    await hub.close()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

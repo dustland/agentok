@@ -1,0 +1,31 @@
+# Group Chats → AG2 1.0 WorkflowAdapter + TransitionGraph
+{% for group_data in group_nodes %}
+{%- set max_round = group_data.group_node.data.max_round if group_data.group_node.data.max_round is defined else 10 %}
+{%- set method = group_data.group_node.data.speaker_selection_method if group_data.group_node.data.speaker_selection_method is defined else 'round_robin' %}
+# Participants for group {{ group_data.group_node.id }}
+_group_participants_{{ group_data.group_node.id }} = [
+{%- for node in group_data.children %}
+    node_{{ node['id'] }},
+{%- endfor %}
+{%- if group_data.preceding_node %}
+    node_{{ group_data.preceding_node.id }},
+{%- endif %}
+]
+
+{%- if method == 'round_robin' %}
+# Graph built after Hub registration (needs agent_ids) — see start_chat
+_group_graph_factory_{{ group_data.group_node.id }} = lambda agent_ids: TransitionGraph.round_robin(
+    participants=agent_ids,
+    max_turns={{ max_round }},
+)
+{%- elif method == 'sequential' or method == 'sequence' %}
+_group_graph_factory_{{ group_data.group_node.id }} = lambda agent_ids: TransitionGraph.sequence(agent_ids)
+{%- else %}
+# auto / random / other → round_robin with max_turns (LLM routing via default handler + tools)
+_group_graph_factory_{{ group_data.group_node.id }} = lambda agent_ids: TransitionGraph.round_robin(
+    participants=agent_ids,
+    max_turns={{ max_round }},
+)
+{%- endif %}
+
+{% endfor %}

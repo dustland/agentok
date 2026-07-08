@@ -9,6 +9,12 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![GitHub release](https://img.shields.io/github/v/release/dustland/agentok)
 [![GitHub star](https://img.shields.io/github/stars/dustland/agentok?style=flat&logo=github&color=black&labelColor=gray)](https://star-history.com/#dustland/agentok)
+[![AG2](https://img.shields.io/badge/AG2-v1.0.0b0-brightgreen)](https://github.com/ag2ai/ag2)
+
+> [!IMPORTANT]
+> **Agentok Studio now targets [AG2 v1](https://github.com/ag2ai/ag2) (`ag2==1.0.0b0`).**
+> Codegen emits the protocol-driven API (`import ag2`, `Agent`, and `ag2.network` hubs/channels)—not the classic `autogen` / `ConversableAgent` stack.
+> Some legacy node types (Captain, Nested Chat, Retrieve, GPT Assistant, etc.) are not supported yet and will fail codegen with a clear error.
 
 🎉 February 10, 2025: Introduced a DeepSeek Assistant Node. Meanwhile, we also added a new feature that allows users to configure the LLM model for all conversable nodes.
 
@@ -47,7 +53,7 @@ The tool can contain variables, which users can configure in the tool management
 
 ### Full Visibility of Code and Data
 
-We strive to create a user-friendly tool that generates native Python code with minimal dependencies. Simply put, Agentok Studio is a diagram-based code generator for AG2. The generated code is self-contained and can be executed anywhere as a normal Python program, relying solely on the official `ag2` library.
+We strive to create a user-friendly tool that generates native Python code with minimal dependencies. Simply put, Agentok Studio is a diagram-based code generator for AG2. The generated code is self-contained and can be executed anywhere as a normal Python program, targeting the official `ag2` 1.0 API (`Agent` + `ag2.network`).
 
 ![codegen-1](./frontend/public/images/screenshot/code-generation.png)
 
@@ -116,7 +122,7 @@ For production, set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
 
 `REPLICATE_API_TOKEN` is required for LLaVA agent functionality.
 
-**IMPORTANT**: AG2 can use Docker for code execution. Either install Docker locally, or set `AUTOGEN_USE_DOCKER=False` in `api/.env`.
+**IMPORTANT**: Generated scripts use AG2 1.0 (`ag2==1.0.0b0`). Code execution defaults to a local sandbox (`LocalEnvironment`); for stronger isolation, configure a Docker-backed environment in your own extensions. Provide model credentials via Studio settings or `api/OAI_CONFIG_LIST`.
 
 This project uses Supabase for authentication and data storage. Follow [./db/README.md](./db/README.md) to prepare the database and set environment variables (`SUPABASE_*` in `.env.sample`).
 

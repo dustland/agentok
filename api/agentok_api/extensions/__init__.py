@@ -1,5 +1,6 @@
-from .extended_agent import ExtendedConversableAgent
+from .extended_agent import ExtendedAgent, ExtendedConversableAgent
 
 __all__ = [
-  'ExtendedConversableAgent',
+    "ExtendedAgent",
+    "ExtendedConversableAgent",
 ]

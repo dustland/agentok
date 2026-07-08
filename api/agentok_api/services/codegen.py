@@ -6,7 +6,6 @@ import textwrap
 from datetime import datetime
 import hashlib
 from pathlib import Path
-import autogen
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from jinja2.ext import do
@@ -16,12 +15,29 @@ from termcolor import colored
 from ..models import Project, Tool
 from .supabase import SupabaseClient, create_supabase_client
 
+# Classic AG2 node types that have no direct equivalent in ag2 1.0.0b0.
+UNSUPPORTED_CLASS_TYPES = {
+    "CaptainAgent",
+    "GPTAssistantAgent",
+    "RetrieveAssistantAgent",
+    "RetrieveUserProxyAgent",
+    "MathUserProxyAgent",
+    "LLaVAAgent",
+    "MultimodalConversableAgent",
+    "CompressibleAgent",
+}
+
 
 class CodegenService:
     def __init__(self, supabase: SupabaseClient):
+        templates_root = os.path.join(os.getcwd(), "agentok_api/", "templates")
+        # Prefer AG2 1.0 templates; fall back to legacy templates for shared pieces.
         self.env = Environment(
             loader=FileSystemLoader(
-                searchpath=os.path.join(os.getcwd(), "agentok_api/", "templates")
+                searchpath=[
+                    os.path.join(templates_root, "v1"),
+                    templates_root,
+                ]
             ),
             autoescape=select_autoescape(),
             extensions=[do],
@@ -60,16 +76,6 @@ class CodegenService:
         if user_settings and "general" in user_settings and 'models' in user_settings["general"]:
             config_list.extend([model for model in user_settings["general"]["models"] if model["enabled"] == True])
 
-        # Apply filters if any
-        # if user_settings and 'filters' in user_settings:
-        #     config_list = autogen.filter_config(
-        #         config_list,
-        #         filter_dict={
-        #             "model": user_settings['filters'].get('name', '').split(','),
-        #             "tags": user_settings['filters'].get('tags', '').split(','),
-        #         }
-        #     )
-
         # Check cache first
         cache_key = self._get_cache_key(project)
         cached_code = self._get_cached_code(cache_key)
@@ -77,6 +83,8 @@ class CodegenService:
             return cached_code
 
         flow = project.flow
+        self._validate_supported_nodes(flow)
+
         initializer_node = next(
             (node for node in flow.nodes if node["type"] == "initializer"), None
         )
@@ -153,7 +161,7 @@ class CodegenService:
                         "preceding_node": next(
                             (
                                 n for n in flow.nodes
-                                if any(e["source"] == n["id"] and e["target"] == node["id"] 
+                                if any(e["source"] == n["id"] and e["target"] == node["id"]
                                       for e in flow.edges)
                             ),
                             None,
@@ -163,6 +171,11 @@ class CodegenService:
 
         # Prepare nested chats data
         nested_chats = self.prepare_nested_chats(flow)
+        if nested_chats:
+            raise Exception(
+                "Nested chat nodes are not supported in AG2 1.0 yet. "
+                "Remove nestedchat nodes from the flow or flatten them into a workflow."
+            )
 
         note_nodes = [node for node in flow.nodes if node["type"] == "note"]
 
@@ -186,10 +199,10 @@ class CodegenService:
             if tool_id in tool_assignments
         }
         print(tool_dict)
-        
+
         # Generate tool envs and replace placeholders
         self.generate_tool_envs(project, tool_dict)
-        
+
         # Replace env placeholders in tool code
         for tool_id, tool in tool_dict.items():
             tool['code'] = self.replace_env_placeholders(tool)
@@ -220,6 +233,20 @@ class CodegenService:
         self._cache_code(cache_key, code)
 
         return code
+
+    def _validate_supported_nodes(self, flow) -> None:
+        unsupported = []
+        for node in flow.nodes:
+            class_type = (node.get("data") or {}).get("class_type")
+            if class_type in UNSUPPORTED_CLASS_TYPES:
+                name = (node.get("data") or {}).get("name") or node.get("id")
+                unsupported.append(f"{name} ({class_type})")
+        if unsupported:
+            raise Exception(
+                "The following node types are not supported with AG2 1.0.0b0: "
+                + ", ".join(unsupported)
+                + ". Replace them with AssistantAgent / Agent / WebSurfer (web tools) nodes."
+            )
 
     def prepare_nested_chats(self, flow):
         nested_chats = []
@@ -322,28 +349,22 @@ class CodegenService:
                     else:
                         print(colored(f"Assigned tool ID {tool_id} not found in tools", "red"))
 
-        # Process WebSurferAgent tools
+        # Process WebSurferAgent tools — attach WebSearchTool/WebFetchTool on the agent in AG2 1.0
         for edge in edges:
             target_node = next(
                 (node for node in nodes if node["id"] == edge["target"]),
                 None
             )
             if target_node and target_node.get("data", {}).get("class_type") == "WebSurferAgent":
-                source_node = next(
-                    (node for node in nodes if node["id"] == edge["source"]),
-                    None
-                )
-                if source_node:
-                    web_tool = target_node.get("data", {}).get("web_tool", "browser_use")
-                    tool_id = f"websurfer_{target_node['id']}"
-                    if tool_id not in tool_assignments:
-                        tool_assignments[tool_id] = {
-                            "caller": target_node["id"],      # WebSurferAgent calls the function
-                            "executor": source_node["id"],    # UserProxy executes the function
-                            "is_websurfer": True,
-                            "web_tool": web_tool,
-                            "websurfer_node_id": target_node["id"]
-                        }
+                tool_id = f"websurfer_{target_node['id']}"
+                if tool_id not in tool_assignments:
+                    tool_assignments[tool_id] = {
+                        "caller": target_node["id"],
+                        "executor": target_node["id"],
+                        "is_websurfer": True,
+                        "web_tool": target_node.get("data", {}).get("web_tool", "web_search"),
+                        "websurfer_node_id": target_node["id"],
+                    }
 
         return tool_assignments
 

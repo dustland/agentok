@@ -1,0 +1,178 @@
+
+# Start the conversation (AG2 1.0 network)
+
+async def _register_agent(hub, agent):
+    """Register an Agent on the Hub and return its AgentClient."""
+    return await hub.register(
+        agent,
+        Passport(name=agent.name),
+        Resume(),
+    )
+
+
+async def _chat_result_from_channel(hub, channel_id, chat_id=None):
+    """Build a Studio-compatible chat result dict from the channel WAL."""
+    history = []
+    try:
+        wal = await hub.read_wal(channel_id)
+        for envelope in wal:
+            text = ""
+            if getattr(envelope, "event_data", None):
+                text = envelope.event_data.get("text") or ""
+            if text:
+                history.append({
+                    "role": "assistant",
+                    "name": getattr(envelope, "sender_id", "") or "agent",
+                    "content": text,
+                })
+    except Exception as exc:
+        history.append({"role": "system", "content": f"Failed to read WAL: {exc}"})
+
+    summary = history[-1]["content"] if history else ""
+    return {
+        "chat_id": chat_id or channel_id,
+        "chat_history": history,
+        "summary": summary,
+        "cost": {},
+        "human_input": [],
+    }
+
+
+async def _run_pair_chat(opener, recipient, message, max_turns=None, timeout=300.0):
+    """Run a 1:1 chat via consulting (1 turn) or round_robin workflow (N turns)."""
+    if max_turns and int(max_turns) > 1:
+        graph = TransitionGraph.round_robin(
+            participants=[opener.agent_id, recipient.agent_id],
+            max_turns=int(max_turns),
+        )
+        channel = await opener.open(
+            type="workflow",
+            target=recipient.agent_id,
+            knobs={"graph": graph.to_dict()},
+        )
+    else:
+        channel = await opener.open(
+            type="consulting",
+            target=recipient.agent_id,
+        )
+    await channel.send(message)
+    await opener.wait_for_channel_event(
+        channel_id=channel.channel_id,
+        predicate=lambda e: e.event_type == EV_CHANNEL_CLOSED,
+        timeout=timeout,
+    )
+    return channel
+
+
+async def main():
+    if _AGENTOPS_AVAILABLE and os.getenv("AGENTOPS_API_KEY"):
+        agentops.init(api_key=os.getenv("AGENTOPS_API_KEY"))
+
+    hub = await Hub.open(MemoryKnowledgeStore())
+    clients = {}
+    agent_by_var = {}
+
+{% for node in conversable_nodes %}
+    agent_by_var["node_{{ node.id }}"] = node_{{ node.id }}
+{% endfor %}
+{% for node in assistant_nodes %}
+    agent_by_var["node_{{ node.id }}"] = node_{{ node.id }}
+{% endfor %}
+{% for node in user_nodes %}
+    agent_by_var["node_{{ node.id }}"] = node_{{ node.id }}
+{% endfor %}
+{% for node in gpt_assistant_nodes %}
+    agent_by_var["node_{{ node.id }}"] = node_{{ node.id }}
+{% endfor %}
+
+    for _name, _agent in agent_by_var.items():
+        clients[id(_agent)] = await _register_agent(hub, _agent)
+
+    def client_for(agent):
+        return clients[id(agent)]
+
+{% if group_nodes %}
+    # ---- Group chat workflows ----
+{% for group_data in group_nodes %}
+    _participants_{{ group_data.group_node.id }} = _group_participants_{{ group_data.group_node.id }}
+    _clients_{{ group_data.group_node.id }} = [client_for(a) for a in _participants_{{ group_data.group_node.id }}]
+    _ids_{{ group_data.group_node.id }} = [c.agent_id for c in _clients_{{ group_data.group_node.id }}]
+    _graph_{{ group_data.group_node.id }} = _group_graph_factory_{{ group_data.group_node.id }}(_ids_{{ group_data.group_node.id }})
+    _initiator_{{ group_data.group_node.id }} = _clients_{{ group_data.group_node.id }}[0]
+    _targets_{{ group_data.group_node.id }} = _ids_{{ group_data.group_node.id }}[1:] or [_ids_{{ group_data.group_node.id }}[0]]
+    channel_{{ group_data.group_node.id }} = await _initiator_{{ group_data.group_node.id }}.open(
+        type="workflow",
+        target=_targets_{{ group_data.group_node.id }},
+        knobs={"graph": _graph_{{ group_data.group_node.id }}.to_dict()},
+    )
+{% endfor %}
+{%- set first_group = group_nodes[0] %}
+    await channel_{{ first_group.group_node.id }}.send(args.message)
+    await _initiator_{{ first_group.group_node.id }}.wait_for_channel_event(
+        channel_id=channel_{{ first_group.group_node.id }}.channel_id,
+        predicate=lambda e: e.event_type == EV_CHANNEL_CLOSED,
+        timeout=600.0,
+    )
+    chat_result = await _chat_result_from_channel(
+        hub, channel_{{ first_group.group_node.id }}.channel_id
+    )
+    print("__CHAT_RESULT__", json.dumps(chat_result), flush=True)
+
+{% elif initial_chat_targets | length > 1 %}
+    # ---- Sequential chats ----
+    results = []
+    opener = client_for(node_{{ first_converser['id'] }})
+{%- for target in initial_chat_targets %}
+{%- set max_turns = target['chat_options'].max_turns if target['chat_options'] and target['chat_options'].max_turns else none %}
+    _recipient_{{ loop.index }} = client_for(node_{{ target['node']['id'] }})
+    {%- if loop.first %}
+    _msg_{{ loop.index }} = args.message
+    {%- elif target['chat_options'] and target['chat_options'].instructions %}
+    _msg_{{ loop.index }} = """{{ target.chat_options.instructions }}"""
+    {%- else %}
+    _msg_{{ loop.index }} = args.message
+    {%- endif %}
+    channel_{{ loop.index }} = await _run_pair_chat(
+        opener,
+        _recipient_{{ loop.index }},
+        _msg_{{ loop.index }},
+        max_turns={{ max_turns if max_turns else 'None' }},
+        timeout={% if max_turns %}{{ (max_turns | int) * 60 }}{% else %}300.0{% endif %},
+    )
+    results.append(await _chat_result_from_channel(
+        hub, channel_{{ loop.index }}.channel_id, chat_id="{{ loop.index }}"
+    ))
+{%- endfor %}
+    print("__CHAT_RESULTS__", json.dumps(results), flush=True)
+
+{% elif initial_chat_targets | length == 1 %}
+    # ---- Single chat ----
+    opener = client_for(node_{{ first_converser['id'] }})
+    recipient = client_for(node_{{ initial_chat_targets[0].node['id'] }})
+{%- set max_turns = none %}
+{%- if initial_chat_targets[0]['chat_options'] and initial_chat_targets[0]['chat_options'].max_turns %}
+{%- set max_turns = initial_chat_targets[0]['chat_options'].max_turns %}
+{%- elif initializer_node and initializer_node['data'] and initializer_node.data.get('max_turns') %}
+{%- set max_turns = initializer_node.data.max_turns %}
+{%- endif %}
+    channel = await _run_pair_chat(
+        opener,
+        recipient,
+        args.message,
+        max_turns={{ max_turns if max_turns else 'None' }},
+        timeout={% if max_turns %}{{ (max_turns | int) * 60 }}{% else %}300.0{% endif %},
+    )
+    chat_result = await _chat_result_from_channel(hub, channel.channel_id)
+    print("__CHAT_RESULT__", json.dumps(chat_result), flush=True)
+
+{% else %}
+    raise RuntimeError("No chat targets found in the flow.")
+{% endif %}
+
+    await hub.close()
+    if _AGENTOPS_AVAILABLE and os.getenv("AGENTOPS_API_KEY"):
+        agentops.end_session("Success")
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

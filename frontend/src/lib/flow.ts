@@ -23,8 +23,9 @@ export const nodeTypes: NodeTypes = {
   groupchat: GroupNode,
   note: NoteNode,
   conversable: ConversableAgent,
-  captain: CaptainAgentNode,
   websurfer: WebSurferNode,
+  // captain retained for opening legacy flows; not offered in the palette
+  captain: CaptainAgentNode,
   deepseek: DeepSeekNode,
   gpt_assistant: GPTAssistantNode,
   retrieve_user: RetrieveUserProxyAgent,
@@ -135,71 +136,39 @@ export const basicNodes: NodeMeta[] = [
   },
 ];
 
+/** Node class_types removed in AG2 1.0 (no codegen support). */
+export const unsupportedClassTypes = new Set([
+  'CaptainAgent',
+  'GPTAssistantAgent',
+  'RetrieveAssistantAgent',
+  'RetrieveUserProxyAgent',
+  'MathUserProxyAgent',
+  'LLaVAAgent',
+  'MultimodalConversableAgent',
+  'CompressibleAgent',
+]);
+
 export const advancedNodes: NodeMeta[] = [
-  {
-    id: 'captain',
-    icon: Icons.agent,
-    name: 'Captain',
-    description: 'An agent enhanced to break down and solve complex tasks',
-    class_type: 'CaptainAgent',
-  },
+  // CaptainAgent is not available in AG2 1.0.0b0
   {
     id: 'websurfer',
     icon: Icons.globe,
     name: 'Web Surfer',
-    description: 'A WebSurfer Agent',
+    description:
+      'An AG2 Agent with WebSearchTool and WebFetchTool for browsing the web',
     class_type: 'WebSurferAgent',
   },
   {
     id: 'deepseek',
     icon: Icons.deepseek,
     name: 'DeepSeek',
-    description: 'A DeepSeek Agent',
+    description: 'An Assistant Agent configured for DeepSeek models',
     class_type: 'AssistantAgent',
     data: {
       enable_llm: true,
       model_id: 'deepseek-chat',
     },
   },
-  // {
-  //   id: 'retrieve_assistant',
-  //   icon: Icons.robot,
-  //   name: 'RetrieveAssistant',
-  //   description: 'A Retrieve Assistant Agent',
-  //   class_type: 'RetrieveAssistantAgent',
-  // },
-  // {
-  //   id: 'retrieve_user',
-  //   icon: Icons.search,
-  //   name: 'RetrieveUserProxy',
-  //   description: 'A Retrieve User Proxy Agent',
-  //   class_type: 'RetrieveUserProxyAgent',
-  // },
-  // {
-  //   id: 'gpt_assistant',
-  //   icon: Icons.openai,
-  //   name: 'GPTAssistant',
-  //   description: 'A GPT Assistant Agent',
-  //   class_type: 'GPTAssistantAgent',
-  // },
-  // {
-  //   id: 'multimodal',
-  //   icon: Icons.Eye,
-  //   name: 'MultimodalAssistant',
-  //   class_type: 'MultimodalConversableAgent',
-  // },
-  // {
-  //   id: 'llava',
-  //   icon: Icons.Meta,
-  //   name: 'LLaVA',
-  //   class_type: 'LLaVAAgent',
-  // },
-  // {
-  //   id: 'math_user_proxy',
-  //   icon: Icons.User4,
-  //   name: 'MathUserProxyAgent',
-  //   class_type: 'MathUserProxyAgent',
-  // },
 ];
 
 const allNodes = [...basicNodes, ...advancedNodes];

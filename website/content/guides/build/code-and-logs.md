@@ -4,7 +4,9 @@ Agentok Studio is a diagram-based code generator for AG2. Everything on the canv
 
 ## Generated Python
 
-Click the **Python** icon in the workflow toolbar to view the generated script. The output uses the official `ag2` library and is meant to be self-contained.
+Click the **Python** icon in the workflow toolbar to view the generated script. The output targets **AG2 1.0** (`import ag2`, `Agent`, and `ag2.network` hubs/channels) and is meant to be self-contained.
+
+Requires `pip install 'ag2[openai]==1.0.0b0'` (or newer 1.0.x) when running outside the studio.
 
 ![Generated Python code](/images/screenshot/code-generation.png)
 

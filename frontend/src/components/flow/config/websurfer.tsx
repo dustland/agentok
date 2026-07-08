@@ -23,10 +23,17 @@ export const WebSurferConfig = ({ nodeId, data, className, ...props }: any) => {
         nodeId={nodeId}
         data={data}
         name="web_tool"
-        label="Web Tool"
+        label="Web Tools (AG2 1.0)"
         options={[
-          { value: 'browser_use', label: 'Browser Use' },
-          { value: 'crawl4ai', label: 'Crawl4AI', disabled: true },
+          {
+            value: 'web_search',
+            label: 'WebSearchTool + WebFetchTool',
+          },
+          {
+            value: 'browser_use',
+            label: 'Legacy browser-use (unsupported)',
+            disabled: true,
+          },
         ]}
       />
     </ConversableAgentConfig>

@@ -1,0 +1,25 @@
+{% macro generate_users(user_nodes) %}
+# User Proxy Agents (AG2 1.0 Agent with optional HITL / code execution)
+{%- for node in user_nodes %}
+{%- set obs_name = node.data.name | default(node.id) %}
+{%- set work_dir = node.data.code_execution_config.work_dir if node.data.code_execution_config and node.data.code_execution_config.work_dir else 'user_code' %}
+node_{{ node.id }} = Agent(
+    name="{{ node.data.name }}",
+    {%- if node.data.system_message %}
+    prompt="""{{ node.data.system_message }}""",
+    {%- else %}
+    prompt="You are a user proxy that can execute tools and relay human input when needed.",
+    {%- endif %}
+    {%- if node.data.enable_llm %}
+    config=default_config,
+    {%- else %}
+    config=None,
+    {%- endif %}
+    {%- if not node.data.human_input_mode or node.data.human_input_mode != 'NEVER' %}
+    hitl_hook=studio_hitl_hook,
+    {%- endif %}
+    observers=make_studio_observer("{{ obs_name }}", "assistant"),
+    tools=[SandboxCodeTool(LocalEnvironment(os.path.join(temp_dir, "{{ work_dir }}")))],
+)
+{%- endfor %}
+{% endmacro %}

@@ -1,0 +1,17 @@
+{# Tool Binding — AG2 1.0 @agent.tool registration #}
+{%- if tool_assignments %}
+{%- for tool_id, assignment in tool_assignments.items() %}
+{%- if assignment.get('is_websurfer') %}
+# WebSurfer tools already attached via WebSearchTool/WebFetchTool on the agent
+pass  # websurfer_{{ assignment.websurfer_node_id }}
+{%- else %}
+{%- set tool = tool_dict[tool_id] %}
+# Register tool: {{ tool.name }} on caller agent
+node_{{ assignment.caller }}.tool(
+    {{ tool.func_name }},
+    name="{{ tool.func_name }}",
+    description="""{{ tool.description }}""",
+)
+{%- endif %}
+{%- endfor %}
+{%- endif %}

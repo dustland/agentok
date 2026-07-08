@@ -1,5 +1,10 @@
 import { Edge, Node } from '@xyflow/react';
 
+/**
+ * Legacy client-side snippet generator.
+ * Production codegen runs on the API via Jinja2 templates (AG2 1.0).
+ * Kept for notebooks / offline experiments only.
+ */
 export enum AgentTypes {
   user_proxy = 'UserProxyAgent',
   assistant = 'AssistantAgent',
@@ -10,13 +15,11 @@ export enum AgentTypes {
 
 const genAssistantAgent = (node: Node) => {
   const name = node.data.name;
-  const instructions = node.data.instructions
-    ? `"${node.data.instructions}"`
-    : 'AssistantAgent.DEFAULT_SYSTEM_MESSAGE';
   return `
-node_${node.id} = ${node.data.type}(
+node_${node.id} = Agent(
   name="${name}",
-  llm_config=llm_config,
+  prompt="You are a helpful AI assistant.",
+  config=default_config,
 )
 `;
 };
@@ -24,14 +27,9 @@ node_${node.id} = ${node.data.type}(
 const genConversableAgent = (node: Node) => {
   const name = node.data.name;
   return `
-node_${node.id} = ${node.data.type}(
+node_${node.id} = Agent(
   name="${name}",
-  max_consecutive_auto_reply=${node.data.max_consecutive_auto_reply},
-  llm_config=${
-    node.data.type === 'MultimodalConversableAgent'
-      ? 'llm_config_4v'
-      : 'llm_config'
-  },
+  config=default_config,
 )
 `;
 };
@@ -39,16 +37,11 @@ node_${node.id} = ${node.data.type}(
 const genUserProxyAgent = (node: Node) => {
   const name = node.data.name;
   return `
-  node_${node.id} = ${node.data.type}(
+node_${node.id} = Agent(
   name="${name}",
-  code_execution_config={
-    "work_dir": "coding"
-  },
-  is_termination_msg=lambda msg: "TERMINATE" in msg["content"],
-  human_input_mode="${node.data.human_input_mode}",
-  system_message="${node.data.system_message}",
-  max_consecutive_auto_reply=${node.data.max_consecutive_auto_reply},
-)\n
+  hitl_hook=studio_hitl_hook,
+  tools=[SandboxCodeTool(LocalEnvironment("coding"))],
+)
 `;
 };
 
@@ -59,15 +52,6 @@ const codegenDict: Record<string, (node: Node) => string> = {
   MultimodalConversableAgent: genConversableAgent,
 };
 
-const importDict: Record<string, string> = {
-  UserProxyAgent: 'from autogen import UserProxyAgent',
-  AssistantAgent: 'from autogen import AssistantAgent',
-  GPTAssistantAgent:
-    'from autogen.agentchat.contrib.gpt_assistant_agent import GPTAssistantAgent',
-  MultimodalConversableAgent:
-    'from autogen.agentchat.contrib.multimodal_conversable_agent import MultimodalConversableAgent',
-};
-
 export const genEntry = (
   data: { nodes: Node[]; edges: Edge[] },
   message: string
@@ -76,12 +60,10 @@ export const genEntry = (
   if (!nodes || nodes.length === 0 || !edges || edges.length === 0) {
     throw new Error('No nodes found or not connected');
   }
-  // Locate the chat node to start the code generation
   const userProxy = nodes.find((node: any) => node.type === 'user');
   if (!userProxy) {
     throw new Error('chat node not found');
   }
-  // Chat should be connected to an UserProxyAgent and at least one AssistantAgent to start conversation
   const chatEdges = edges.filter((edge: any) => edge.target === userProxy.id);
   const upsteamNodes = nodes.filter((node) =>
     chatEdges.find((edge) => edge.source === node.id)
@@ -91,51 +73,35 @@ export const genEntry = (
     throw new Error('No upstream agents found');
   }
 
-  let code = `import autogen\n\nprint(autogen.__version__)\n\n`;
-
-  const uniqueImports = new Set<string>();
-  uniqueImports.add(importDict['AssistantAgent']); // Always import AssistantAgent
-  for (const node of nodes) {
-    const importLine = importDict[node.data.type as keyof typeof importDict];
-    if (importLine) {
-      uniqueImports.add(importLine);
-    } else {
-      console.warn(`No import found for name '${node.data.name}'`);
-    }
-  }
-
-  code += Array.from(uniqueImports).join('\n') + '\n\n';
-
-  code += `
-# The default config list in notebook.
-config_list = autogen.config_list_from_json(
-    "OAI_CONFIG_LIST",
-    filter_dict={
-        "model": ["gpt-4", "gpt-4-1106-preview", "gpt-4-vision-preview"],
-    },
-)
-
-config_list_4v = autogen.config_list_from_json(
-    "OAI_CONFIG_LIST",
-    filter_dict={
-        "model": ["gpt-4-vision-preview"],
-    },
-)
+  let code = `import ag2
+from ag2 import Agent
+print(ag2.__version__)
 
 `;
 
-  code += `llm_config = {"config_list": config_list, "cache_seed": 42}\n\n`;
-  code += `llm_config_4v = {"config_list": config_list_4v, "temperature": 0.5, "max_tokens": 1024}\n\n`;
+  code += `
+from agentok_api.ag2_compat.config_loader import load_model_configs
+from agentok_api.ag2_compat.hitl import studio_hitl_hook
+from ag2.tools import SandboxCodeTool
+from ag2.tools.sandbox import LocalEnvironment
+
+model_configs = load_model_configs()
+default_config = model_configs[0]
+
+`;
 
   for (const node of nodes) {
-    code += codegenDict[node.data.type as keyof typeof codegenDict](node);
+    const generator = codegenDict[node.data.type as keyof typeof codegenDict];
+    if (generator) {
+      code += generator(node);
+    }
   }
 
   code += `
-# Ask the question with an image
-node_${userProxy.id}.initiate_chat(node_${upsteamNodes[0].id},
-                         message="""${message}""")
-  `;
+# Prefer the server-side Jinja2 codegen (AG2 1.0 Hub + channels) for runnable flows.
+# This client stub only sketches Agent construction.
+print("""${message}""")
+`;
 
   return code;
 };

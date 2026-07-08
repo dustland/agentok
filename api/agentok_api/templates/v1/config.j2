@@ -1,0 +1,23 @@
+{%- macro generate_config(project, config_list) %}
+# LLM configuration (AG2 1.0 ModelConfig objects)
+_extra_configs = {{ config_list }}
+_file_configs = load_config_dicts(env_or_file="OAI_CONFIG_LIST", file_location=".")
+_raw_configs = list(_extra_configs) + list(_file_configs)
+if not _raw_configs:
+    raise RuntimeError(
+        "No LLM configs found. Configure models in Studio settings or provide OAI_CONFIG_LIST."
+    )
+
+model_configs = [model_config_from_dict(c) for c in _raw_configs]
+default_config = model_configs[0]
+
+def get_config(model_id=None):
+    if model_id:
+        filtered = filter_configs_by_model(_raw_configs, [model_id])
+        if filtered:
+            return model_config_from_dict(filtered[0])
+        for cfg in model_configs:
+            if getattr(cfg, "model", None) == model_id:
+                return cfg
+    return default_config
+{% endmacro %}

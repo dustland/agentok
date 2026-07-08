@@ -1,0 +1,48 @@
+{% macro get_imports(nodes) %}
+from dotenv import load_dotenv, dotenv_values
+load_dotenv()
+
+import argparse
+import asyncio
+import json
+import os
+import tempfile
+from typing import Annotated
+
+import ag2
+from ag2 import Agent
+from ag2.config import OpenAIConfig
+from ag2.knowledge import MemoryKnowledgeStore
+from ag2.network import (
+    EV_CHANNEL_CLOSED,
+    Hub,
+    Passport,
+    Resume,
+    TransitionGraph,
+)
+from ag2.tools import SandboxCodeTool, WebFetchTool, WebSearchTool
+from ag2.tools.sandbox import LocalEnvironment
+
+from agentok_api.ag2_compat.config_loader import (
+    filter_configs_by_model,
+    load_config_dicts,
+    model_config_from_dict,
+)
+from agentok_api.ag2_compat.hitl import studio_hitl_hook
+from agentok_api.ag2_compat.studio_observer import make_studio_observer
+
+try:
+    import agentops
+    _AGENTOPS_AVAILABLE = True
+except ImportError:
+    _AGENTOPS_AVAILABLE = False
+
+# Parse command line arguments
+parser = argparse.ArgumentParser(description="Start a chat with agents.")
+parser.add_argument("message", type=str, help="The message to send to agent.")
+args = parser.parse_args()
+
+temp_dir = tempfile.gettempdir()
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+{% endmacro %}

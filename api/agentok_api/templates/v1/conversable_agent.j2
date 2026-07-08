@@ -1,0 +1,28 @@
+{%- macro generate_conversable_agents(conversable_nodes) -%}
+# Conversable Agents (AG2 1.0 Agent)
+{% for node in conversable_nodes %}
+{%- set obs_name = node.data.name | default(node.id) %}
+node_{{ node.id }} = Agent(
+    name="{{ node.data.name }}",
+    {%- if node.data.system_message %}
+    prompt="""{{ node.data.system_message }}""",
+    {%- elif node.data.description %}
+    prompt="""{{ node.data.description }}""",
+    {%- endif %}
+    {%- if node.data.disable_llm %}
+    config=None,
+    {%- elif node.data.model_id %}
+    config=get_config("{{ node.data.model_id }}"),
+    {%- else %}
+    config=default_config,
+    {%- endif %}
+    {%- if node.data.human_input_mode and node.data.human_input_mode != 'NEVER' %}
+    hitl_hook=studio_hitl_hook,
+    {%- endif %}
+    observers=make_studio_observer("{{ obs_name }}", "peer"),
+    {%- if node.data.enable_code_execution %}
+    tools=[SandboxCodeTool(LocalEnvironment(os.path.join(temp_dir, "coding_{{ node.id }}")))],
+    {%- endif %}
+)
+{% endfor %}
+{%- endmacro -%}
